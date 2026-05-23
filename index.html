@@ -126,15 +126,33 @@
 
   /* ─── HERO ─── */
   #hero {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 120px 5vw 60px;
     position: relative;
     overflow: hidden;
     min-height: 100vh;
+    padding-top: 72px; /* nav height */
+    display: flex;
+    align-items: center;
+  }
+
+  /* ─── HERO LEFT COLUMN (text) ─── */
+  .hero-left {
+    position: relative;
+    z-index: 4;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 80px 40px 80px 8vw;
+    text-align: left;
+    max-width: 620px;
+  }
+
+  /* ─── HERO RIGHT COLUMN (Spline) — now full background ─── */
+  .hero-right {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    z-index: 1;
   }
 
   .hero-grid-bg {
@@ -167,25 +185,14 @@
     bottom: 0; right: -100px;
   }
 
-  /* keep atmospheric layers behind the interactive 3D scene */
-  .hero-grid-bg { z-index: 0; }
-  .hero-orb { z-index: 0; }
+  /* keep atmospheric layers behind the scrim but above Spline */
+  .hero-grid-bg { z-index: 2; pointer-events: none; }
+  .hero-orb { z-index: 2; }
 
-  /* ─── INTERACTIVE 3D SCENE (Spline) ─── */
-  /*
-   * KEY FIX: do NOT use inset:0 here. If #hero grows taller than 100vh
-   * (it will — tag + h1 + spacer + desc + actions + scroll-hint stack
-   * past the viewport), the iframe inherits that full height and the
-   * Spline camera "floor" sinks below the visible screen, cutting off
-   * the robot. Instead we pin the top edge and give the container
-   * exactly one viewport-height so the 3D scene is always correctly framed.
-   */
+  /* ─── INTERACTIVE 3D SCENE (Spline) — full hero background ─── */
   .hero-spline {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 105vh;          /* 5vh of extra bottom room stops cursor-tracking from clipping the robot */
+    inset: 0;
     z-index: 1;
     overflow: hidden;
     pointer-events: auto;   /* lets users drag/rotate the robot */
@@ -214,57 +221,44 @@
     z-index: 2;
   }
 
-  /* light scrim: keeps headline readable, frames the bot in a soft
-     central window, and blends the scene into the light theme at edges.
-     Matches the Spline container: pinned to top, exactly 100vh tall. */
+  /* scrim: blends the Spline scene into the background at edges and
+     protects text readability on the left side */
   .hero-scrim {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 105vh; /* must match .hero-spline height exactly */
+    inset: 0;
     z-index: 2;
     pointer-events: none;
     background:
       linear-gradient(to bottom,
         var(--bg) 0%,
-        rgba(246,249,255,0.55) 16%,
-        rgba(246,249,255,0) 36%,
-        rgba(246,249,255,0) 60%,
-        rgba(246,249,255,0.6) 82%,
+        rgba(246,249,255,0.2) 10%,
+        rgba(246,249,255,0) 25%,
+        rgba(246,249,255,0) 75%,
+        rgba(246,249,255,0.2) 90%,
         var(--bg) 100%),
-      radial-gradient(ellipse 68% 58% at 50% 46%,
-        rgba(246,249,255,0) 35%,
-        rgba(246,249,255,0.45) 100%);
+      linear-gradient(to right,
+        rgba(246,249,255,0.88) 0%,
+        rgba(246,249,255,0.72) 25%,
+        rgba(246,249,255,0.30) 50%,
+        transparent 75%);
   }
 
-  /* hero text/content sits on top; clicks fall through empty areas
-     to the 3D scene, while buttons + showreel stay clickable */
+  /* .hero-content is now replaced by .hero-left — kept for any legacy selectors */
   .hero-content {
-    position: relative;
-    z-index: 3;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    pointer-events: none;
-  }
-
-  .hero-content a,
-  .hero-content button,
-  .hero-actions,
-  .hero-showreel,
-  .yt-thumb {
     pointer-events: auto;
   }
 
-  /* soft light halo so dark text stays readable over the 3D scene */
+  .hero-left a,
+  .hero-left button,
+  .hero-actions {
+    pointer-events: auto;
+  }
+
+  /* text is in its own column — no overlay halo needed */
   .hero-name,
   .hero-title,
   .hero-desc {
-    text-shadow:
-      0 1px 2px rgba(246,249,255,0.9),
-      0 6px 34px rgba(246,249,255,0.85);
+    text-shadow: none;
   }
 
   .hero-tag {
@@ -301,7 +295,7 @@
 
   .hero-name {
     font-family: var(--font-display);
-    font-size: clamp(52px, 9vw, 110px);
+    font-size: clamp(48px, 6vw, 96px);
     font-weight: 700;
     line-height: 0.95;
     letter-spacing: -0.04em;
@@ -316,7 +310,7 @@
 
   .hero-title {
     font-family: var(--font-display);
-    font-size: clamp(16px, 2.5vw, 26px);
+    font-size: clamp(16px, 2vw, 22px);
     font-weight: 300;
     color: var(--text2);
     letter-spacing: 0.01em;
@@ -340,13 +334,13 @@
    */
   .hero-spacer {
     width: 100%;
-    height: clamp(160px, 26vh, 320px);
+    height: 240px; /* fixed — was clamp(160px,26vh,320px); vh unit caused vertical drift on resize */
     flex-shrink: 0;           /* don't let flexbox collapse this gap */
     pointer-events: none;     /* clicks still pass through to the 3D scene */
   }
 
   .hero-desc {
-    max-width: 560px;
+    max-width: 480px;
     font-size: 16px;
     color: var(--text2);
     line-height: 1.7;
@@ -360,7 +354,7 @@
     display: flex;
     gap: 16px;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     flex-wrap: wrap;
     opacity: 0;
     animation: fadeUp 0.9s var(--ease) 0.8s forwards;
@@ -588,16 +582,40 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
+  /* ─── HERO RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    #hero {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto;
+      min-height: auto;
+      padding-top: 72px;
+    }
+
+    .hero-left {
+      order: 1;
+      padding: 60px 6vw 40px;
+      align-items: flex-start;
+    }
+
+    .hero-right {
+      order: 2;
+      min-height: 420px;
+    }
+
+    .hero-name {
+      font-size: clamp(40px, 10vw, 64px);
+    }
+  }
+
   /* ─── SCROLL INDICATOR ─── */
   .scroll-hint {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     gap: 8px;
     opacity: 0;
     animation: fadeUp 1s var(--ease) 1.5s forwards;
-    margin-top: 60px;
-    padding-bottom: 40px;
+    margin-top: 48px;
   }
 
   .scroll-hint span {
@@ -1284,22 +1302,10 @@
     /* Hide custom cursor on touch devices */
     .cursor, .cursor-ring { display: none; }
     /* 3D scene: decorative on touch so the page scrolls normally */
-    .hero-spline { pointer-events: none; }
-    .hero-spline-badge-mask { width: 120px; height: 46px; }
-    /* firm up the scrim a touch so text stays crisp on narrow screens */
-    .hero-scrim {
-      background:
-        linear-gradient(to bottom,
-          var(--bg) 0%,
-          rgba(246,249,255,0.7) 20%,
-          rgba(246,249,255,0.15) 42%,
-          rgba(246,249,255,0.15) 58%,
-          rgba(246,249,255,0.72) 80%,
-          var(--bg) 100%),
-        radial-gradient(ellipse 80% 60% at 50% 44%,
-          rgba(246,249,255,0) 30%,
-          rgba(246,249,255,0.55) 100%);
+    .hero-spline {
+      pointer-events: none;
     }
+    .hero-spline-badge-mask { width: 120px; height: 46px; }
   }
 
   @media (max-width: 480px) {
@@ -1894,64 +1900,64 @@
 
 <!-- Hero Section -->
 <div id="hero">
+  <!-- Full-background Spline 3D scene -->
+  <div class="hero-right">
+    <div class="hero-spline" aria-hidden="true">
+      <iframe src="https://my.spline.design/r4xbot-ozSxHpMr6lFaKRJL3K31SsN0/"
+              title="Interactive 3D scene"
+              frameborder="0"
+              loading="eager"
+              onload="this.parentElement.classList.add('loaded')"></iframe>
+      <div class="hero-spline-badge-mask"></div>
+    </div>
+  </div>
+
+  <!-- Gradient scrim — sits above Spline, below text -->
+  <div class="hero-scrim"></div>
+
+  <!-- Atmospheric background layers -->
   <div class="hero-grid-bg"></div>
   <div class="hero-orb hero-orb-1"></div>
   <div class="hero-orb hero-orb-2"></div>
 
-  <!-- Interactive 3D scene (Spline) -->
-  <div class="hero-spline" aria-hidden="true">
-    <iframe src="https://my.spline.design/r4xbot-ozSxHpMr6lFaKRJL3K31SsN0/"
-            title="Interactive 3D scene"
-            frameborder="0"
-            loading="eager"
-            onload="this.parentElement.classList.add('loaded')"></iframe>
-    <div class="hero-spline-badge-mask"></div>
-  </div>
-  <div class="hero-scrim"></div>
+  <!-- Left Column: Text Content -->
+  <div class="hero-left">
+    <div class="hero-tag">Available for Projects</div>
 
-  <div class="hero-content">
-  <div class="hero-tag">Available for Projects</div>
+    <h1 class="hero-name">
+      Motion <br/><span class="accent">Designer</span>
+    </h1>
 
-  <h1 class="hero-name">
-    Motion <br/><span class="accent">Designer.</span>
-  </h1>
+    <p class="hero-title">
+      SaaS Video Editor &amp; Creative Director
+    </p>
 
-  <!-- ─── SPACER: empty vertical window for the 3D RUPENDRA card + robot ───
-       The Spline scene's glassmorphic card and robot character sit inside
-       this gap. No HTML text overlaps them here — the scrim + hero-content
-       z-stacking keeps this zone visually clear. -->
-  <div class="hero-spacer" aria-hidden="true"></div>
+    <p class="hero-desc">
+      I craft conversion-driven motion graphics and product videos that make SaaS companies communicate with clarity, speed, and visual precision.
+    </p>
 
-  <p class="hero-title">
-    SaaS Video Editor &amp; Creative Director
-  </p>
+    <div class="hero-actions">
+      <a href="#portfolio" class="btn-primary">
+        View My Work
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#contact" class="btn-secondary">
+        Let's Collaborate
+      </a>
+    </div>
 
-  <p class="hero-desc">
-    I craft conversion-driven motion graphics and product videos that make SaaS companies communicate with clarity, speed, and visual precision.
-  </p>
-
-  <div class="hero-actions">
-    <a href="#portfolio" class="btn-primary">
-      View My Work
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-    </a>
-    <a href="#contact" class="btn-secondary">
-      Let's Collaborate
-    </a>
-  </div>
-
-  <div class="scroll-hint">
-    <span>Scroll</span>
-    <div class="scroll-line"></div>
-  </div>
-  </div><!-- /.hero-content -->
+    <div class="scroll-hint">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </div><!-- /.hero-left -->
 </div>
 
 <!-- Showreel Section -->
 <section id="showreel" style="max-width:1000px; margin:0 auto; padding:100px 5vw 40px; text-align:center;">
   <div class="reveal">
     <div class="section-label" style="justify-content:center;">Showreel</div>
-    <h2 class="section-heading" style="margin-bottom:44px;">A look at the <em style="color:var(--accent); font-style:normal;">work in motion.</em></h2>
+    <h2 class="section-heading" style="margin-bottom:44px;">A look at the <em style="color:var(--accent); font-style:normal;">work in motion</em></h2>
   </div>
   <div class="showreel-feature reveal reveal-delay-1" style="max-width:900px; margin:0 auto;">
     <div class="showreel-wrap">
@@ -2018,7 +2024,7 @@
   <div class="about-right">
     <div class="reveal">
       <div class="section-label">About Me</div>
-      <h2 class="section-heading">I turn complex products into <em style="color:var(--accent); font-style:normal;">clear visual stories.</em></h2>
+      <h2 class="section-heading">I turn complex products into <em style="color:var(--accent); font-style:normal;">clear visual stories</em></h2>
     </div>
 
     <p class="about-p reveal reveal-delay-1">
@@ -2073,7 +2079,7 @@
   <div class="services-header">
     <div>
       <div class="section-label reveal">What I Do</div>
-      <h2 class="section-heading reveal">Services built for <br/><span style="color:var(--accent)">SaaS teams.</span></h2>
+      <h2 class="section-heading reveal">Services built for <br/><span style="color:var(--accent)">SaaS teams</span></h2>
     </div>
     <p class="section-sub reveal" style="text-align:right; max-width:300px;">
       Every deliverable is built to communicate your product faster and convert viewers into users.
@@ -2144,7 +2150,7 @@
 
   <div class="process-intro">
     <div class="section-label reveal">My Process</div>
-    <h2 class="section-heading reveal-float rf-d1">How every project <br/><span style="color:var(--accent)">gets built.</span></h2>
+    <h2 class="section-heading reveal-float rf-d1">How every project <br/><span style="color:var(--accent)">gets built</span></h2>
     <p class="section-sub reveal-float rf-d2">From first brief to final frame — a proven, cinematic workflow designed for zero surprises and maximum impact.</p>
   </div>
 
@@ -2250,7 +2256,7 @@
 
   <div class="portfolio-header">
     <div class="section-label reveal">Selected Work</div>
-    <h2 class="section-heading reveal">The work speaks <br/><span style="color:var(--accent)">for itself.</span></h2>
+    <h2 class="section-heading reveal">The work speaks <br/><span style="color:var(--accent)">for itself</span></h2>
     <p class="section-sub reveal">A selection of motion graphics, SaaS product videos, and short-form content — all crafted with clarity and conversion in mind.</p>
   </div>
 
