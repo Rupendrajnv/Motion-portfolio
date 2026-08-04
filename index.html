@@ -4,11 +4,14 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Rupendra — Motion Designer & SaaS Video Editor</title>
+<meta name="description" content="Motion designer and SaaS video editor crafting conversion-driven product videos, explainers and short-form content." />
+<meta property="og:title" content="Rupendra — Motion Designer & SaaS Video Editor" />
+<meta property="og:description" content="Motion designer and SaaS video editor crafting conversion-driven product videos, explainers and short-form content." />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="preconnect" href="https://www.youtube-nocookie.com" />
-<link rel="preconnect" href="https://i.ytimg.com" />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" />
 <style>
     :root {
     --bg: #F6F9FF;
@@ -209,17 +212,21 @@
 
   .hero-spline.loaded iframe { opacity: 1; }
 
-  /* mask the "Built with Spline" badge for a clean look */
+  /* mask the "Built with Spline" badge — opaque core + feathered blur edges */
   .hero-spline-badge-mask {
     position: absolute;
-    right: 0;
-    bottom: 0;
-    width: 160px;
-    height: 56px;
-    background: var(--bg);
+    right: -40px;
+    bottom: -40px;
+    width: 340px;
+    height: 220px;
+    background: radial-gradient(ellipse 62% 62% at 72% 72%, var(--bg) 0%, var(--bg) 58%, transparent 100%);
+    filter: blur(14px);
+    backdrop-filter: blur(14px);
     pointer-events: auto;
-    z-index: 2;
+    z-index: 3;
   }
+
+
 
   /* scrim: blends the Spline scene into the background at edges and
      protects text readability on the left side */
@@ -607,16 +614,11 @@
     }
   }
 
-  /* ─── SCROLL INDICATOR ─── */
+  /* ─── SCROLL INDICATOR (hidden) ─── */
   .scroll-hint {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-    opacity: 0;
-    animation: fadeUp 1s var(--ease) 1.5s forwards;
-    margin-top: 48px;
+    display: none;
   }
+
 
   .scroll-hint span {
     font-size: 10px;
@@ -1305,7 +1307,7 @@
     .hero-spline {
       pointer-events: none;
     }
-    .hero-spline-badge-mask { width: 120px; height: 46px; }
+    .hero-spline-badge-mask { width: 260px; height: 170px; }
   }
 
   @media (max-width: 480px) {
@@ -1874,10 +1876,92 @@
     display: block;
     flex-shrink: 0;
   }
+
+/* ─── ABOUT: photo removed, single column ─── */
+#about {
+  display: block !important;
+  max-width: 900px;
+  margin: 0 auto;
+}
+#about .about-right { max-width: none; }
+
+/* ─── CLIENT REVIEWS ─── */
+.reviews-header { max-width: 720px; margin-bottom: 64px; }
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+.review-card {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 34px 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  transition: border-color 0.4s var(--ease), transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
+}
+.review-card:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-4px);
+  box-shadow: 0 18px 50px -20px var(--accent-glow);
+}
+.review-quote-mark {
+  font-family: var(--font-display);
+  font-size: 3.4rem;
+  line-height: 0.6;
+  color: var(--accent);
+  opacity: 0.28;
+}
+.review-text {
+  font-size: 0.97rem;
+  color: var(--text2);
+  line-height: 1.75;
+  flex: 1;
+}
+.review-project {
+  font-size: 0.78rem;
+  color: var(--text3);
+  letter-spacing: 0.02em;
+  border-left: 2px solid var(--accent);
+  padding-left: 12px;
+}
+.review-person {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+}
+.review-avatar {
+  width: 42px; height: 42px;
+  flex: 0 0 42px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(145deg, var(--accent), var(--accent2));
+  color: var(--white);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+}
+.review-name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text);
+}
+.review-role { font-size: 0.78rem; color: var(--text3); line-height: 1.4; }
+
+@media (max-width: 860px) {
+  .reviews-grid { grid-template-columns: 1fr; }
+}
+
 </style>
 </head>
 <body>
-
 <!-- Custom Cursor -->
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursorRing"></div>
@@ -1894,6 +1978,7 @@
     <li><a href="#about">About</a></li>
     <li><a href="#services">Services</a></li>
     <li><a href="#portfolio">Work</a></li>
+    <li><a href="#reviews">Reviews</a></li>
     <li><a href="#contact" class="nav-cta">Hire Me</a></li>
   </ul>
 </nav>
@@ -1952,7 +2037,6 @@
     </div>
   </div><!-- /.hero-left -->
 </div>
-
 <!-- Showreel Section -->
 <section id="showreel" style="max-width:1000px; margin:0 auto; padding:100px 5vw 40px; text-align:center;">
   <div class="reveal">
@@ -1977,7 +2061,6 @@
     </div>
   </div>
 </section>
-
 <!-- Marquee -->
 <div class="marquee-section">
   <div class="marquee-track" id="marqueeTrack">
@@ -2004,23 +2087,274 @@
   </div>
 </div>
 
-<!-- About Section -->
-<section id="about">
-  <div class="about-left reveal">
-    <div class="about-photo">
-      <img src="images/profile.jpg" alt="Rupendra" class="about-photo-img"
-        onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
-      <div class="about-photo-placeholder" style="display:none; align-items:center; justify-content:center; flex-direction:column; width:100%; height:100%; border-radius:var(--radius-lg); background:linear-gradient(145deg,#EDF3FF,#DCE9FF);">
-        <span style="font-size:3.5rem; font-weight:700; color:var(--accent); font-family:var(--font-display); letter-spacing:-0.02em;">R.</span>
-        <span style="font-size:0.78rem; color:var(--text3); margin-top:6px;">Add profile.jpg to images/</span>
-      </div>
-      <div class="about-tag">
-        <span class="years">6+</span>
-        <span class="label">Years of Creative Work</span>
-      </div>
-    </div>
+<div class="divider"></div>
+
+<!-- Portfolio Section -->
+<section id="portfolio" style="max-width:1200px; margin:0 auto; padding:120px 5vw;">
+
+  <div class="portfolio-header">
+    <div class="section-label reveal">Selected Work</div>
+    <h2 class="section-heading reveal">The work speaks <br/><span style="color:var(--accent)">for itself</span></h2>
+    <p class="section-sub reveal">A selection of motion graphics, SaaS product videos, and short-form content — all crafted with clarity and conversion in mind.</p>
   </div>
 
+  <!-- 16:9 Work -->
+  <div class="portfolio-section-title reveal">Landscape · 16 : 9</div>
+    <div class="portfolio-16-9">
+
+    <div class="portfolio-card reveal reveal-delay-1">
+      <div class="video-thumb">
+        <div class="yt-thumb" data-id="wAwt4o7ThCI" data-type="video" data-url="https://youtu.be/wAwt4o7ThCI">
+          <img src="https://i.ytimg.com/vi/wAwt4o7ThCI/maxresdefault.jpg" alt="SaaS Explainer" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/wAwt4o7ThCI/hqdefault.jpg'" />
+          <div class="yt-play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+          <div class="yt-fallback">
+            <p>This video can't be embedded. Watch it on YouTube.</p>
+            <a href="https://youtu.be/wAwt4o7ThCI" target="_blank" rel="noopener">Watch on YouTube</a>
+          </div>
+        </div>
+      </div>
+      <div class="portfolio-card-info">
+        <div>
+          <div class="portfolio-card-title">SaaS Explainer</div>
+          <div class="portfolio-card-type">Product Demo · Motion Design</div>
+        </div>
+        <a href="https://youtu.be/wAwt4o7ThCI" target="_blank" class="portfolio-card-link" aria-label="Watch on YouTube">
+          <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="portfolio-card reveal reveal-delay-2">
+      <div class="video-thumb">
+        <div class="yt-thumb" data-id="NVnnKm4qGPo" data-type="video" data-url="https://youtu.be/NVnnKm4qGPo">
+          <img src="https://i.ytimg.com/vi/NVnnKm4qGPo/maxresdefault.jpg" alt="Product Demo" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/NVnnKm4qGPo/hqdefault.jpg'" />
+          <div class="yt-play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+          <div class="yt-fallback">
+            <p>This video can't be embedded. Watch it on YouTube.</p>
+            <a href="https://youtu.be/NVnnKm4qGPo" target="_blank" rel="noopener">Watch on YouTube</a>
+          </div>
+        </div>
+      </div>
+      <div class="portfolio-card-info">
+        <div>
+          <div class="portfolio-card-title">Product Demo</div>
+          <div class="portfolio-card-type">UI Walkthrough · SaaS</div>
+        </div>
+        <a href="https://youtu.be/NVnnKm4qGPo" target="_blank" class="portfolio-card-link" aria-label="Watch on YouTube">
+          <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="portfolio-card reveal reveal-delay-3">
+      <div class="video-thumb">
+        <div class="yt-thumb" data-id="DZ9hEQVkGCw" data-type="video" data-url="https://youtu.be/DZ9hEQVkGCw">
+          <img src="https://i.ytimg.com/vi/DZ9hEQVkGCw/maxresdefault.jpg" alt="Brand Promo Film" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/DZ9hEQVkGCw/hqdefault.jpg'" />
+          <div class="yt-play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+          <div class="yt-fallback">
+            <p>This video can't be embedded. Watch it on YouTube.</p>
+            <a href="https://youtu.be/DZ9hEQVkGCw" target="_blank" rel="noopener">Watch on YouTube</a>
+          </div>
+        </div>
+      </div>
+      <div class="portfolio-card-info">
+        <div>
+          <div class="portfolio-card-title">Brand Promo Film</div>
+          <div class="portfolio-card-type">Cinematic · Brand Story</div>
+        </div>
+        <a href="https://youtu.be/DZ9hEQVkGCw" target="_blank" class="portfolio-card-link" aria-label="Watch on YouTube">
+          <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="portfolio-card reveal reveal-delay-4">
+      <div class="video-thumb">
+        <div class="yt-thumb" data-id="M3bbLGj6chU" data-type="video" data-url="https://youtu.be/M3bbLGj6chU">
+          <img src="https://i.ytimg.com/vi/M3bbLGj6chU/maxresdefault.jpg" alt="Motion Graphics Reel" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/M3bbLGj6chU/hqdefault.jpg'" />
+          <div class="yt-play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+          <div class="yt-fallback">
+            <p>This video can't be embedded. Watch it on YouTube.</p>
+            <a href="https://youtu.be/M3bbLGj6chU" target="_blank" rel="noopener">Watch on YouTube</a>
+          </div>
+        </div>
+      </div>
+      <div class="portfolio-card-info">
+        <div>
+          <div class="portfolio-card-title">Motion Graphics Reel</div>
+          <div class="portfolio-card-type">After Effects · Brand</div>
+        </div>
+        <a href="https://youtu.be/M3bbLGj6chU" target="_blank" class="portfolio-card-link" aria-label="Watch on YouTube">
+          <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 9:16 Work -->
+  <div class="portfolio-section-title reveal">Vertical · 9 : 16</div>
+  <div class="portfolio-9-16">
+
+    <div class="portfolio-card-vertical reveal reveal-delay-1">
+      <div class="video-thumb-vertical">
+        <div class="yt-thumb" data-id="z9vP-cdyb14" data-type="shorts" data-url="https://youtube.com/shorts/z9vP-cdyb14" style="height:100%;">
+          <img src="https://i.ytimg.com/vi/z9vP-cdyb14/hqdefault.jpg" alt="Short 1" style="object-position:center;" />
+          <div class="yt-play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+          <div class="yt-fallback">
+            <p>Watch this short on YouTube.</p>
+            <a href="https://youtube.com/shorts/z9vP-cdyb14" target="_blank" rel="noopener">Open YouTube</a>
+          </div>
+        </div>
+      </div>
+      <div class="portfolio-card-info" style="padding:16px;">
+        <div>
+          <div class="portfolio-card-title" style="font-size:13px;">LinkedIn Short</div>
+          <div class="portfolio-card-type">Social · Vertical</div>
+        </div>
+        <a href="https://youtube.com/shorts/z9vP-cdyb14" target="_blank" class="portfolio-card-link" aria-label="Watch on YouTube">
+          <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="portfolio-card-vertical reveal reveal-delay-2">
+      <div class="video-thumb-vertical">
+        <div class="yt-thumb" data-id="7JMUSf7vBpw" data-type="shorts" data-url="https://youtube.com/shorts/7JMUSf7vBpw" style="height:100%;">
+          <img src="https://i.ytimg.com/vi/7JMUSf7vBpw/hqdefault.jpg" alt="Short 2" style="object-position:center;" />
+          <div class="yt-play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+          <div class="yt-fallback">
+            <p>Watch this short on YouTube.</p>
+            <a href="https://youtube.com/shorts/7JMUSf7vBpw" target="_blank" rel="noopener">Open YouTube</a>
+          </div>
+        </div>
+      </div>
+      <div class="portfolio-card-info" style="padding:16px;">
+        <div>
+          <div class="portfolio-card-title" style="font-size:13px;">Reels Edit</div>
+          <div class="portfolio-card-type">Social · Vertical</div>
+        </div>
+        <a href="https://youtube.com/shorts/7JMUSf7vBpw" target="_blank" class="portfolio-card-link" aria-label="Watch on YouTube">
+          <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="portfolio-card-vertical reveal reveal-delay-3">
+      <div class="video-thumb-vertical">
+        <div class="yt-thumb" data-id="mJGO6jvWCOU" data-type="shorts" data-url="https://youtube.com/shorts/mJGO6jvWCOU" style="height:100%;">
+          <img src="https://i.ytimg.com/vi/mJGO6jvWCOU/hqdefault.jpg" alt="Short 3" style="object-position:center;" />
+          <div class="yt-play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+          <div class="yt-fallback">
+            <p>Watch this short on YouTube.</p>
+            <a href="https://youtube.com/shorts/mJGO6jvWCOU" target="_blank" rel="noopener">Open YouTube</a>
+          </div>
+        </div>
+      </div>
+      <div class="portfolio-card-info" style="padding:16px;">
+        <div>
+          <div class="portfolio-card-title" style="font-size:13px;">Product Short</div>
+          <div class="portfolio-card-type">SaaS · Vertical</div>
+        </div>
+        <a href="https://youtube.com/shorts/mJGO6jvWCOU" target="_blank" class="portfolio-card-link" aria-label="Watch on YouTube">
+          <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="portfolio-card-vertical reveal reveal-delay-4">
+      <div class="video-thumb-vertical">
+        <div class="yt-thumb" data-id="F94xLTJAmpQ" data-type="shorts" data-url="https://youtube.com/shorts/F94xLTJAmpQ" style="height:100%;">
+          <img src="https://i.ytimg.com/vi/F94xLTJAmpQ/hqdefault.jpg" alt="Short 4" style="object-position:center;" />
+          <div class="yt-play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+          <div class="yt-fallback">
+            <p>Watch this short on YouTube.</p>
+            <a href="https://youtube.com/shorts/F94xLTJAmpQ" target="_blank" rel="noopener">Open YouTube</a>
+          </div>
+        </div>
+      </div>
+      <div class="portfolio-card-info" style="padding:16px;">
+        <div>
+          <div class="portfolio-card-title" style="font-size:13px;">Motion Reel</div>
+          <div class="portfolio-card-type">After Effects · Short</div>
+        </div>
+        <a href="https://youtube.com/shorts/F94xLTJAmpQ" target="_blank" class="portfolio-card-link" aria-label="Watch on YouTube">
+          <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+
+<!-- Client Reviews Section -->
+<section id="reviews" style="max-width:1200px; margin:0 auto; padding:120px 5vw;">
+  <div class="reviews-header">
+    <div class="section-label reveal">Client Reviews</div>
+    <h2 class="section-heading reveal">What clients say <br/><span style="color:var(--accent)">after the work ships</span></h2>
+    <p class="section-sub reveal">Real feedback from marketing leads, institutions, and founders I&rsquo;ve delivered for.</p>
+  </div>
+
+  <div class="reviews-grid">
+    <article class="review-card reveal reveal-delay-1">
+      <div class="review-quote-mark">&ldquo;</div>
+      <p class="review-text">Rupendra is a joy to work with, really keen and to provide service. Has great Adobe suite skills, able to quickly learn our system and adapt. We will work with him again.</p>
+      <div class="review-project">Adaptation of Photoshop files to load into Bynder DAM Digital Templates</div>
+      <div class="review-person">
+        <div class="review-avatar">JH</div>
+        <div>
+          <div class="review-name">James Howle</div>
+          <div class="review-role">Head of Digital Marketing, Ceva Sant&eacute; Animale</div>
+        </div>
+      </div>
+    </article>
+
+    <article class="review-card reveal reveal-delay-2">
+      <div class="review-quote-mark">&ldquo;</div>
+      <p class="review-text">Rupendra was excellent! Very friendly, prompt and professional. He listened to what I wanted, and was patient and aiming to meet my needs. He went the extra mile to make sure I was satisfied with the finished product. He has a personalized style, showing care in the customer&rsquo;s job. I have been in customer service for many years and know superior service when I see it. I would definitely hire him for future jobs!</p>
+      <div class="review-person">
+        <div class="review-avatar">JA</div>
+        <div>
+          <div class="review-name">Jacqueline Allee</div>
+          <div class="review-role">International Programs Assistant, U.S. Naval War College</div>
+        </div>
+      </div>
+    </article>
+
+    <article class="review-card reveal reveal-delay-1">
+      <div class="review-quote-mark">&ldquo;</div>
+      <p class="review-text">I recently hired Rupendra to edit a video for me, and his work was outstanding. The turnaround was fast, the quality was exactly what I wanted, and the whole process was smooth from start to finish. His communication was clear, he understood the vision right away, and he delivered efficiently without needing endless revisions. I genuinely enjoyed working with him and would confidently recommend him to anyone looking for reliable, high&#8209;quality video editing.</p>
+      <div class="review-person">
+        <div class="review-avatar">RS</div>
+        <div>
+          <div class="review-name">Ram Sund</div>
+          <div class="review-role">Sund Group Corp</div>
+        </div>
+      </div>
+    </article>
+
+    <article class="review-card reveal reveal-delay-2">
+      <div class="review-quote-mark">&ldquo;</div>
+      <p class="review-text">Rupendra did an outstanding job on my real estate promo video. He completely understood the vision, delivered a polished, high-quality result, and turned it around incredibly fast. Communication was smooth, he was responsive to feedback, and the final video exceeded my expectations. If you&rsquo;re looking for a reliable, talented freelancer who delivers quickly without sacrificing quality, Rupendra is the one. Highly recommend!</p>
+      <div class="review-person">
+        <div class="review-avatar">PC</div>
+        <div>
+          <div class="review-name">Patricia Cleary</div>
+          <div class="review-role">Milford, USA</div>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+
+<div class="divider"></div>
+
+<!-- About Section -->
+<section id="about">
   <div class="about-right">
     <div class="reveal">
       <div class="section-label">About Me</div>
@@ -2248,207 +2582,6 @@
   </div>
 </section>
 
-
-<div class="divider"></div>
-
-<!-- Portfolio Section -->
-<section id="portfolio" style="max-width:1200px; margin:0 auto; padding:120px 5vw;">
-
-  <div class="portfolio-header">
-    <div class="section-label reveal">Selected Work</div>
-    <h2 class="section-heading reveal">The work speaks <br/><span style="color:var(--accent)">for itself</span></h2>
-    <p class="section-sub reveal">A selection of motion graphics, SaaS product videos, and short-form content — all crafted with clarity and conversion in mind.</p>
-  </div>
-
-  <!-- 16:9 Work -->
-  <div class="portfolio-section-title reveal">Landscape · 16 : 9</div>
-    <div class="portfolio-16-9">
-
-    <div class="portfolio-card reveal reveal-delay-1">
-      <div class="video-thumb">
-        <div class="yt-thumb" data-id="wAwt4o7ThCI" data-type="video" data-url="https://youtu.be/wAwt4o7ThCI">
-          <img src="https://i.ytimg.com/vi/wAwt4o7ThCI/maxresdefault.jpg" alt="SaaS Explainer" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/wAwt4o7ThCI/hqdefault.jpg'" />
-          <div class="yt-play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
-          <div class="yt-fallback">
-            <p>This video can't be embedded. Watch it on YouTube.</p>
-            <a href="https://youtu.be/wAwt4o7ThCI" target="_blank" rel="noopener">Watch on YouTube</a>
-          </div>
-        </div>
-      </div>
-      <div class="portfolio-card-info">
-        <div>
-          <div class="portfolio-card-title">SaaS Explainer</div>
-          <div class="portfolio-card-type">Product Demo · Motion Design</div>
-        </div>
-        <a href="https://youtu.be/wAwt4o7ThCI" target="_blank" class="portfolio-card-link" aria-label="Watch on YouTube">
-          <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-        </a>
-      </div>
-    </div>
-
-    <div class="portfolio-card reveal reveal-delay-2">
-      <div class="video-thumb">
-        <div class="yt-thumb" data-id="NVnnKm4qGPo" data-type="video" data-url="https://youtu.be/NVnnKm4qGPo">
-          <img src="https://i.ytimg.com/vi/NVnnKm4qGPo/maxresdefault.jpg" alt="Product Demo" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/NVnnKm4qGPo/hqdefault.jpg'" />
-          <div class="yt-play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
-          <div class="yt-fallback">
-            <p>This video can't be embedded. Watch it on YouTube.</p>
-            <a href="https://youtu.be/NVnnKm4qGPo" target="_blank" rel="noopener">Watch on YouTube</a>
-          </div>
-        </div>
-      </div>
-      <div class="portfolio-card-info">
-        <div>
-          <div class="portfolio-card-title">Product Demo</div>
-          <div class="portfolio-card-type">UI Walkthrough · SaaS</div>
-        </div>
-        <a href="https://youtu.be/NVnnKm4qGPo" target="_blank" class="portfolio-card-link" aria-label="Watch on YouTube">
-          <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-        </a>
-      </div>
-    </div>
-
-    <div class="portfolio-card reveal reveal-delay-3">
-      <div class="video-thumb">
-        <div class="yt-thumb" data-id="DZ9hEQVkGCw" data-type="video" data-url="https://youtu.be/DZ9hEQVkGCw">
-          <img src="https://i.ytimg.com/vi/DZ9hEQVkGCw/maxresdefault.jpg" alt="Brand Promo Film" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/DZ9hEQVkGCw/hqdefault.jpg'" />
-          <div class="yt-play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
-          <div class="yt-fallback">
-            <p>This video can't be embedded. Watch it on YouTube.</p>
-            <a href="https://youtu.be/DZ9hEQVkGCw" target="_blank" rel="noopener">Watch on YouTube</a>
-          </div>
-        </div>
-      </div>
-      <div class="portfolio-card-info">
-        <div>
-          <div class="portfolio-card-title">Brand Promo Film</div>
-          <div class="portfolio-card-type">Cinematic · Brand Story</div>
-        </div>
-        <a href="https://youtu.be/DZ9hEQVkGCw" target="_blank" class="portfolio-card-link" aria-label="Watch on YouTube">
-          <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-        </a>
-      </div>
-    </div>
-
-    <div class="portfolio-card reveal reveal-delay-4">
-      <div class="video-thumb">
-        <div class="yt-thumb" data-id="M3bbLGj6chU" data-type="video" data-url="https://youtu.be/M3bbLGj6chU">
-          <img src="https://i.ytimg.com/vi/M3bbLGj6chU/maxresdefault.jpg" alt="Motion Graphics Reel" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/M3bbLGj6chU/hqdefault.jpg'" />
-          <div class="yt-play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
-          <div class="yt-fallback">
-            <p>This video can't be embedded. Watch it on YouTube.</p>
-            <a href="https://youtu.be/M3bbLGj6chU" target="_blank" rel="noopener">Watch on YouTube</a>
-          </div>
-        </div>
-      </div>
-      <div class="portfolio-card-info">
-        <div>
-          <div class="portfolio-card-title">Motion Graphics Reel</div>
-          <div class="portfolio-card-type">After Effects · Brand</div>
-        </div>
-        <a href="https://youtu.be/M3bbLGj6chU" target="_blank" class="portfolio-card-link" aria-label="Watch on YouTube">
-          <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-        </a>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- 9:16 Work -->
-  <div class="portfolio-section-title reveal">Vertical · 9 : 16</div>
-  <div class="portfolio-9-16">
-
-    <div class="portfolio-card-vertical reveal reveal-delay-1">
-      <div class="video-thumb-vertical">
-        <div class="yt-thumb" data-id="z9vP-cdyb14" data-type="shorts" data-url="https://youtube.com/shorts/z9vP-cdyb14" style="height:100%;">
-          <img src="https://i.ytimg.com/vi/z9vP-cdyb14/hqdefault.jpg" alt="Short 1" style="object-position:center;" />
-          <div class="yt-play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
-          <div class="yt-fallback">
-            <p>Watch this short on YouTube.</p>
-            <a href="https://youtube.com/shorts/z9vP-cdyb14" target="_blank" rel="noopener">Open YouTube</a>
-          </div>
-        </div>
-      </div>
-      <div class="portfolio-card-info" style="padding:16px;">
-        <div>
-          <div class="portfolio-card-title" style="font-size:13px;">LinkedIn Short</div>
-          <div class="portfolio-card-type">Social · Vertical</div>
-        </div>
-        <a href="https://youtube.com/shorts/z9vP-cdyb14" target="_blank" class="portfolio-card-link" aria-label="Watch on YouTube">
-          <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-        </a>
-      </div>
-    </div>
-
-    <div class="portfolio-card-vertical reveal reveal-delay-2">
-      <div class="video-thumb-vertical">
-        <div class="yt-thumb" data-id="7JMUSf7vBpw" data-type="shorts" data-url="https://youtube.com/shorts/7JMUSf7vBpw" style="height:100%;">
-          <img src="https://i.ytimg.com/vi/7JMUSf7vBpw/hqdefault.jpg" alt="Short 2" style="object-position:center;" />
-          <div class="yt-play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
-          <div class="yt-fallback">
-            <p>Watch this short on YouTube.</p>
-            <a href="https://youtube.com/shorts/7JMUSf7vBpw" target="_blank" rel="noopener">Open YouTube</a>
-          </div>
-        </div>
-      </div>
-      <div class="portfolio-card-info" style="padding:16px;">
-        <div>
-          <div class="portfolio-card-title" style="font-size:13px;">Reels Edit</div>
-          <div class="portfolio-card-type">Social · Vertical</div>
-        </div>
-        <a href="https://youtube.com/shorts/7JMUSf7vBpw" target="_blank" class="portfolio-card-link" aria-label="Watch on YouTube">
-          <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-        </a>
-      </div>
-    </div>
-
-    <div class="portfolio-card-vertical reveal reveal-delay-3">
-      <div class="video-thumb-vertical">
-        <div class="yt-thumb" data-id="mJGO6jvWCOU" data-type="shorts" data-url="https://youtube.com/shorts/mJGO6jvWCOU" style="height:100%;">
-          <img src="https://i.ytimg.com/vi/mJGO6jvWCOU/hqdefault.jpg" alt="Short 3" style="object-position:center;" />
-          <div class="yt-play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
-          <div class="yt-fallback">
-            <p>Watch this short on YouTube.</p>
-            <a href="https://youtube.com/shorts/mJGO6jvWCOU" target="_blank" rel="noopener">Open YouTube</a>
-          </div>
-        </div>
-      </div>
-      <div class="portfolio-card-info" style="padding:16px;">
-        <div>
-          <div class="portfolio-card-title" style="font-size:13px;">Product Short</div>
-          <div class="portfolio-card-type">SaaS · Vertical</div>
-        </div>
-        <a href="https://youtube.com/shorts/mJGO6jvWCOU" target="_blank" class="portfolio-card-link" aria-label="Watch on YouTube">
-          <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-        </a>
-      </div>
-    </div>
-
-    <div class="portfolio-card-vertical reveal reveal-delay-4">
-      <div class="video-thumb-vertical">
-        <div class="yt-thumb" data-id="F94xLTJAmpQ" data-type="shorts" data-url="https://youtube.com/shorts/F94xLTJAmpQ" style="height:100%;">
-          <img src="https://i.ytimg.com/vi/F94xLTJAmpQ/hqdefault.jpg" alt="Short 4" style="object-position:center;" />
-          <div class="yt-play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
-          <div class="yt-fallback">
-            <p>Watch this short on YouTube.</p>
-            <a href="https://youtube.com/shorts/F94xLTJAmpQ" target="_blank" rel="noopener">Open YouTube</a>
-          </div>
-        </div>
-      </div>
-      <div class="portfolio-card-info" style="padding:16px;">
-        <div>
-          <div class="portfolio-card-title" style="font-size:13px;">Motion Reel</div>
-          <div class="portfolio-card-type">After Effects · Short</div>
-        </div>
-        <a href="https://youtube.com/shorts/F94xLTJAmpQ" target="_blank" class="portfolio-card-link" aria-label="Watch on YouTube">
-          <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-        </a>
-      </div>
-    </div>
-
-  </div>
-</section>
-
 <div class="divider"></div>
 
 <!-- Contact Section -->
@@ -2469,7 +2602,6 @@
     </div>
   </div>
 </section>
-
 <!-- Footer -->
 <footer>
   <a href="#hero" class="footer-logo">R<span>.</span></a>
@@ -2493,7 +2625,6 @@
 
   <p class="footer-copy">© 2025 Rupendra. All rights reserved.</p>
 </footer>
-
 <script>
   // ── Custom Cursor ──
   const cursor = document.getElementById('cursor');
