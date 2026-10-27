@@ -329,8 +329,57 @@
   }
   .scene .why b { display: block; margin-bottom: 4px; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); }
 
+
+  /* ─── SCRIPT ─── */
+  .script-wrap { margin-top: 40px; display: grid; grid-template-columns: 8fr 4fr; gap: 18px; align-items: start; }
+  .script {
+    position: relative; margin: 0; padding: 40px 44px;
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg);
+    font-family: var(--font-display); font-weight: 500;
+    font-size: clamp(19px, 2vw, 26px); line-height: 1.6; letter-spacing: -0.015em; color: var(--text);
+  }
+  .script::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--accent), transparent); }
+  .seg { padding: 2px 4px; border-radius: 6px; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+  .seg-pain    { background: rgba(199,0,28,0.08);  box-shadow: inset 0 -2px 0 rgba(199,0,28,0.55); }
+  .seg-switch  { background: rgba(154,184,230,0.22); box-shadow: inset 0 -2px 0 #9AB8E6; }
+  .seg-clarity { background: rgba(27,106,213,0.09); box-shadow: inset 0 -2px 0 rgba(27,106,213,0.6); }
+  .seg-trust   { background: rgba(63,135,255,0.08); box-shadow: inset 0 -2px 0 rgba(63,135,255,0.55); }
+  .seg-action  { background: rgba(44,249,154,0.16); box-shadow: inset 0 -2px 0 #19C97A; }
+  .script-side { display: flex; flex-direction: column; gap: 18px; position: sticky; top: 96px; }
+  .script-stats {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border);
+    border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden;
+  }
+  .script-stats div { background: var(--surface); padding: 18px 12px; text-align: center; }
+  .script-stats b { display: block; font-family: var(--font-display); font-size: 28px; font-weight: 700; letter-spacing: -0.03em; color: var(--accent); line-height: 1.1; }
+  .script-stats span { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text3); }
+  .script-legend {
+    list-style: none; display: flex; flex-direction: column; gap: 12px;
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 22px;
+  }
+  .script-legend li { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-size: 15px; font-weight: 600; }
+  .script-legend li i { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .script-legend li span { margin-left: auto; font-family: var(--font-body); font-size: 12px; font-weight: 500; color: var(--text3); }
+  .rules { margin-top: 18px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+  .rule { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 22px 22px 24px; }
+  .rule span { font-family: var(--font-display); font-size: 12px; font-weight: 700; color: var(--accent); letter-spacing: 0.06em; }
+  .rule h3 { font-family: var(--font-display); font-size: 17px; font-weight: 700; letter-spacing: -0.015em; margin: 6px 0; line-height: 1.25; }
+  .rule p { font-size: 14px; line-height: 1.6; color: var(--text2); }
+
+  /* VO line on scene cards */
+  .scene .vo {
+    margin: 2px 0 12px; padding: 12px 14px;
+    background: var(--surface2); border-left: 3px solid var(--accent); border-radius: 4px 10px 10px 4px;
+    font-family: var(--font-display); font-size: 15px; font-weight: 500; line-height: 1.55; color: var(--text);
+  }
+  .scene .vo span {
+    display: inline-block; margin-right: 8px; padding: 1px 7px; border-radius: 6px; vertical-align: 2px;
+    background: var(--accent); color: #fff; font-family: var(--font-body); font-size: 10px; font-weight: 700; letter-spacing: 0.08em;
+  }
+  .scene .what { font-size: 14px; color: var(--text2); }
+
   /* ─── CRAFT ─── */
-  .craft { margin-top: 44px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+  .craft { margin-top: 44px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
   .craft-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; }
   .craft-card .frame { border: 0; border-radius: 0; aspect-ratio: 4 / 3; }
   .craft-card div.txt { padding: 18px 20px 22px; }
@@ -407,6 +456,9 @@
   @media (max-width: 1024px) {
     .arc-acts { grid-template-columns: repeat(3, 1fr); }
     .craft { grid-template-columns: 1fr 1fr; }
+    .script-wrap { grid-template-columns: 1fr; }
+    .script-side { position: static; }
+    .rules { grid-template-columns: 1fr 1fr; }
     .process { grid-template-columns: 1fr 1fr; }
     .palette { grid-template-columns: repeat(3, 1fr); }
   }
@@ -431,6 +483,8 @@
     .split { gap: 8px; }
     .arc-acts { grid-template-columns: 1fr 1fr; }
     .craft, .process { grid-template-columns: 1fr; }
+    .rules { grid-template-columns: 1fr; }
+    .script { padding: 26px 22px; }
     .palette { grid-template-columns: repeat(2, 1fr); }
     .switch .txt, .panel { padding: 24px 22px; }
     .cta { padding: 56px 22px; margin-top: 80px; }
@@ -480,14 +534,14 @@
     <h1>Turning a finance <span class="red">bottleneck</span> into finance <span class="blue">without&nbsp;friction.</span></h1>
     <p class="hero-intro">
       A self-initiated explainer for <strong>Sequence</strong>, an AI-native platform that automates billing, invoicing and revenue recognition for finance teams.
-      I wrote the story, built the storyboard, designed every frame in Figma and animated it in After Effects. <strong>Solo, in 9 days.</strong>
+      I wrote the script, built the storyboard, designed every frame in Figma and animated it in After Effects. <strong>Solo, in 9 days.</strong>
     </p>
 
     <div class="facts">
       <div class="fact"><span>My role</span><b>Script · Storyboard · Design · Animation</b></div>
       <div class="fact"><span>Timeline</span><b>9 days, solo</b></div>
       <div class="fact"><span>Tools</span><b>Figma · After Effects</b></div>
-      <div class="fact"><span>Format</span><b>51 sec · 16:9 · 1080p</b></div>
+      <div class="fact"><span>Format</span><b>51 sec · Voiceover · 16:9</b></div>
     </div>
 
     <div class="film" id="film">
@@ -535,7 +589,7 @@
   <!-- ─── 02 HOOK ─── -->
   <section class="block wrap" id="hook">
     <div class="section-label rv"><b>02</b> The hook</div>
-    <p class="hook-quote rv">“Your finance team isn’t slow…<br /><span class="red">your system is.”</span></p>
+    <p class="hook-quote rv">“Your finance team isn’t slow.<br /><span class="red">Your system is.”</span></p>
     <div class="pair rv">
       <div class="frame"><img src="images/case-sequence/01-hook.jpg" alt="Opening line: Your finance team isn't slow" loading="lazy" /><span class="ts">0:02</span></div>
       <div class="frame"><img src="images/case-sequence/02-system.jpg" alt="The reveal: your system, in red with warning icons" loading="lazy" /><span class="ts">0:03</span></div>
@@ -544,7 +598,7 @@
       <div></div>
       <div class="rv">
         <p class="lead">
-          Most finance software ads open on the product. I opened on blame, and then moved it.
+          Those are the first eight words of the voiceover. Most finance software ads open on the product. I opened on blame, and then moved it.
         </p>
         <p class="lead">
           Finance teams hear “why is this taking so long?” all the time. The first two seconds agree with that feeling, then flip it.
@@ -555,9 +609,47 @@
     </div>
   </section>
 
-  <!-- ─── 03 ARC ─── -->
+  <!-- ─── 03 SCRIPT ─── -->
+  <section class="block wrap" id="script">
+    <div class="section-label rv"><b>03</b> The script</div>
+    <h2 class="section-heading rv">106 words. Every sentence earns its place.</h2>
+    <p class="lead rv">The whole film hangs on this voiceover. Plain finance words, one idea per sentence, and Sequence isn't named until the cost of the problem is clear. The colors match the five acts of the film.</p>
+
+    <div class="script-wrap rv">
+      <blockquote class="script">
+        <span class="seg seg-pain">Your finance team isn&#8217;t slow. Your system is. Every deal triggers a chain of manual work: contracts, billing, revenue tracking, all across disconnected tools. That&#8217;s how revenue gets delayed, errors happen, and finance becomes a bottleneck.</span>
+        <span class="seg seg-switch">Sequence replaces that entire workflow with one intelligent system.</span>
+        <span class="seg seg-clarity">Just send a contract. Sequence reads it, understands the terms, and automatically handles billing, invoicing, and revenue recognition. Its AI agents don&#8217;t just track data; they take action, following up, updating records, and keeping everything accurate in real time.</span>
+        <span class="seg seg-trust">Fully compliant, audit-ready, and built for scale. So your team can stop fixing spreadsheets and start scaling revenue.</span>
+        <span class="seg seg-action">Sequence: finance without friction.</span>
+      </blockquote>
+      <aside class="script-side">
+        <div class="script-stats">
+          <div><b>106</b><span>words</span></div>
+          <div><b>51s</b><span>runtime</span></div>
+          <div><b>~125</b><span>words / min</span></div>
+        </div>
+        <ul class="script-legend">
+          <li><i style="background:var(--film-red)"></i>Pain<span>36 words · 34%</span></li>
+          <li><i style="background:#9AB8E6"></i>The switch<span>9 words</span></li>
+          <li><i style="background:var(--film-blue)"></i>Clarity<span>39 words · 37%</span></li>
+          <li><i style="background:var(--accent)"></i>Trust<span>18 words</span></li>
+          <li><i style="background:var(--film-green)"></i>Action<span>4 words</span></li>
+        </ul>
+      </aside>
+    </div>
+
+    <div class="rules">
+      <div class="rule rv"><span>01</span><h3>Blame the system, not the team</h3><p>The opening line takes the buyer's side before it asks for anything.</p></div>
+      <div class="rule rv"><span>02</span><h3>Pain before product</h3><p>Over a third of the script is the problem. Sequence only appears once delay, errors and the bottleneck are on the table.</p></div>
+      <div class="rule rv"><span>03</span><h3>Speak the buyer's language</h3><p>Contracts, billing, spreadsheets, audit-ready. Words a finance lead uses every week, not product jargon.</p></div>
+      <div class="rule rv"><span>04</span><h3>End on the opposite</h3><p>It opens on a slow system and closes on “finance without friction.” The last line answers the first.</p></div>
+    </div>
+  </section>
+
+  <!-- ─── 04 ARC ─── -->
   <section class="block wrap" id="arc">
-    <div class="section-label rv"><b>03</b> Story structure</div>
+    <div class="section-label rv"><b>04</b> Story structure</div>
     <h2 class="section-heading rv">Five acts in 51 seconds</h2>
     <p class="lead rv">The film follows one arc: <strong>pain → switch → clarity → trust → action.</strong> Tap any act to jump the film to that moment.</p>
 
@@ -623,7 +715,7 @@
   <section class="block wrap" id="worlds">
     <div class="split">
       <div class="rv">
-        <div class="section-label"><b>04</b> Art direction</div>
+        <div class="section-label"><b>05</b> Art direction</div>
         <h2 class="section-heading">Two visual worlds, one switch</h2>
       </div>
       <div class="rv">
@@ -688,15 +780,16 @@
 
   <!-- ─── 05 SCENES ─── -->
   <section class="block wrap" id="scenes">
-    <div class="section-label rv"><b>05</b> Scene by scene</div>
+    <div class="section-label rv"><b>06</b> Scene by scene</div>
     <h2 class="section-heading rv">Every scene has one job</h2>
-    <p class="lead rv">If a shot couldn't say why it was there, it didn't make the cut. Here's the reasoning behind each beat.</p>
+    <p class="lead rv">If a shot couldn't say why it was there, it didn't make the cut. Each beat below shows the voiceover line, what's on screen, and why it's there.</p>
 
     <div class="scenes">
       <article class="scene rv">
         <div class="frame"><img src="images/case-sequence/03-noise.jpg" alt="Laptop buried in Stripe, Slack and email alerts" loading="lazy" /><span class="ts">0:04</span></div>
         <div class="body">
           <h3>The noise</h3>
+          <p class="vo"><span>VO</span>“Every deal triggers a chain of manual work…”</p>
           <p class="what">A laptop drowning in failed Stripe payments, Slack pings and “start closing deals” emails.</p>
           <p class="why"><b>Why it's there</b>Every finance lead has seen this screen at 11pm on day 30. Recognition earns attention faster than any claim.</p>
         </div>
@@ -705,6 +798,7 @@
         <div class="frame"><img src="images/case-sequence/04-deal.jpg" alt="A 240k contract connected to QuickBooks, billing, contracts, invoices and revenue" loading="lazy" /><span class="ts">0:07</span></div>
         <div class="body">
           <h3>One deal, five systems</h3>
+          <p class="vo"><span>VO</span>“…contracts, billing, revenue tracking, all across disconnected tools.”</p>
           <p class="what">A $240k contract has to travel through QuickBooks, billing, contracts, invoices and revenue. Then the connections snap.</p>
           <p class="why"><b>Why it's there</b>This is the invisible part of the problem. Drawing the journey shows why things break without a single word of explanation.</p>
         </div>
@@ -713,6 +807,7 @@
         <div class="frame"><img src="images/case-sequence/06-delay.jpg" alt="Delay card: revenue delayed 23 days" loading="lazy" /><span class="ts">0:13</span></div>
         <div class="body">
           <h3>Put a price on it</h3>
+          <p class="vo"><span>VO</span>“That&#8217;s how revenue gets delayed, errors happen…”</p>
           <p class="what">23 days of delay. $4.2M in invoicing errors. One number per card, one card per beat.</p>
           <p class="why"><b>Why it's there</b>CFOs think in days and dollars. Pain without a number is just a mood.</p>
         </div>
@@ -721,6 +816,7 @@
         <div class="frame"><img src="images/case-sequence/08-bottleneck.jpg" alt="Finance becomes bottleneck" loading="lazy" /><span class="ts">0:16</span></div>
         <div class="body">
           <h3>Land the problem</h3>
+          <p class="vo"><span>VO</span>“…and finance becomes a bottleneck.”</p>
           <p class="what">“Finance becomes bottleneck,” big and red. The last dark frame before the switch.</p>
           <p class="why"><b>Why it's there</b>The whole first act builds to this line. It's the lowest point, so the switch that follows feels like relief.</p>
         </div>
@@ -729,7 +825,8 @@
         <div class="frame"><img src="images/case-sequence/09-reveal.jpg" alt="Sequence logo reveal on white" loading="lazy" /><span class="ts">0:19</span></div>
         <div class="body">
           <h3>The switch</h3>
-          <p class="what">Hard turn from dark to white. Sequence. Then “One intelligent…”</p>
+          <p class="vo"><span>VO</span>“Sequence replaces that entire workflow with one intelligent system.”</p>
+          <p class="what">Hard cut from dark to white. The Sequence name, then “One intelligent” builds on screen.</p>
           <p class="why"><b>Why it's there</b>The brand reveal sits at the biggest contrast moment in the film, so it's the frame people remember.</p>
         </div>
       </article>
@@ -737,6 +834,7 @@
         <div class="frame"><img src="images/case-sequence/11-contract.jpg" alt="A signed service agreement drops into frame" loading="lazy" /><span class="ts">0:23</span></div>
         <div class="body">
           <h3>Start where it broke</h3>
+          <p class="vo"><span>VO</span>“Just send a contract.”</p>
           <p class="what">A signed service agreement drops into frame.</p>
           <p class="why"><b>Why it's there</b>Act one broke at the contract, so act two starts with the contract. The solution answers the exact problem we just watched.</p>
         </div>
@@ -745,6 +843,7 @@
         <div class="frame"><img src="images/case-sequence/12-agent.jpg" alt="Sequence reads and understands the contract, then generates billing, invoices and revenue recognition" loading="lazy" /><span class="ts">0:30</span></div>
         <div class="body">
           <h3>The agent at work</h3>
+          <p class="vo"><span>VO</span>“Sequence reads it, understands the terms, and automatically handles billing, invoicing, and revenue recognition.”</p>
           <p class="what">Sequence reads the contract, understands it, and generates billing, invoices and revenue recognition, all the way to 100%.</p>
           <p class="why"><b>Why it's there</b>This is Sequence's real contract-intake idea, shown as one continuous flow instead of three separate feature callouts.</p>
         </div>
@@ -753,7 +852,8 @@
         <div class="frame"><img src="images/case-sequence/14-action.jpg" alt="3D blocks: Following up, Updating records, Accurate real time" loading="lazy" /><span class="ts">0:36</span></div>
         <div class="body">
           <h3>From reading to doing</h3>
-          <p class="what">Following up. Updating records. Accurate in real time. Big glossy 3D blocks rolling past.</p>
+          <p class="vo"><span>VO</span>“Its AI agents don&#8217;t just track data; they take action, following up, updating records, and keeping everything accurate in real time.”</p>
+          <p class="what">Each action word arrives on its own big glossy 3D block, rolling past in sync with the voice.</p>
           <p class="why"><b>Why it's there</b>The agent doesn't stop at understanding, it acts. Physical, heavy objects make “work getting done” feel real.</p>
         </div>
       </article>
@@ -761,7 +861,8 @@
         <div class="frame"><img src="images/case-sequence/16-trust.jpg" alt="Compliance badges: ASC 606, GDPR, ISO 27001, SOC 2 Type II, Build for Scale" loading="lazy" /><span class="ts">0:44</span></div>
         <div class="body">
           <h3>Answer the objections</h3>
-          <p class="what">ASC 606, GDPR, ISO 27001, SOC 2. Fully compliant, audit ready, built for scale.</p>
+          <p class="vo"><span>VO</span>“Fully compliant, audit-ready, and built for scale.”</p>
+          <p class="what">ASC 606, GDPR, ISO 27001 and SOC 2 badges stack up under the line.</p>
           <p class="why"><b>Why it's there</b>No finance team switches billing systems without this. Skipping it would quietly kill the deal.</p>
         </div>
       </article>
@@ -769,7 +870,8 @@
         <div class="frame"><img src="images/case-sequence/19-cta.jpg" alt="End card: Sequence, Finance without friction, sequencehq.com" loading="lazy" /><span class="ts">0:50</span></div>
         <div class="body">
           <h3>Close the loop</h3>
-          <p class="what">“Sequence. Finance without friction.” One URL. Nothing else on screen.</p>
+          <p class="vo"><span>VO</span>“So your team can stop fixing spreadsheets and start scaling revenue. Sequence: finance without friction.”</p>
+          <p class="what">Customer cards and a revenue dashboard for the payoff, then the tagline and one URL on a clean end card.</p>
           <p class="why"><b>Why it's there</b>The tagline is the exact opposite of the opening problem, so the story ends where it began, solved.</p>
         </div>
       </article>
@@ -778,7 +880,7 @@
 
   <!-- ─── 06 CRAFT ─── -->
   <section class="block wrap" id="craft">
-    <div class="section-label rv"><b>06</b> Craft decisions</div>
+    <div class="section-label rv"><b>07</b> Craft decisions</div>
     <h2 class="section-heading rv">Small decisions that make it feel premium</h2>
     <div class="craft">
       <div class="craft-card rv">
@@ -813,19 +915,35 @@
           <p>The 3D glass blocks appear only in the action beat, so the moment the agent starts working feels heavier than everything around it.</p>
         </div>
       </div>
+      <div class="craft-card rv">
+        <div class="frame"><img src="images/case-sequence/10-intelligent.jpg" alt="" loading="lazy" /></div>
+        <div class="txt">
+          <span class="n">05</span>
+          <h3>Say it, then show it</h3>
+          <p>The key word of each line lands on screen as type, right as it's spoken: slow, system, bottleneck, read, understand, real time. The story still reads with the sound off.</p>
+        </div>
+      </div>
+      <div class="craft-card rv">
+        <div class="frame"><img src="images/case-sequence/11-contract.jpg" alt="" loading="lazy" /></div>
+        <div class="txt">
+          <span class="n">06</span>
+          <h3>Paced for a finance buyer</h3>
+          <p>106 words in 51 seconds is about 125 words a minute, calmer than a typical ad read. Every claim gets a beat to land before the next one arrives.</p>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- ─── 07 PROCESS ─── -->
   <section class="block wrap" id="process">
-    <div class="section-label rv"><b>07</b> Process</div>
+    <div class="section-label rv"><b>08</b> Process</div>
     <h2 class="section-heading rv">Script to final frame in 9 days</h2>
     <div class="process rv">
       <div class="step">
         <span class="num">01</span>
         <h3>Script</h3>
         <span class="tool">Research + writing</span>
-        <p>Studied Sequence's product and its buyer, then wrote the story beat by beat around one idea: blame the system, not the team.</p>
+        <p>Studied Sequence's product and its buyer, then wrote a 106-word voiceover around one idea: blame the system, not the team.</p>
       </div>
       <div class="step">
         <span class="num">02</span>
@@ -857,7 +975,7 @@
   <section class="block wrap" id="measure">
     <div class="split">
       <div class="rv">
-        <div class="section-label"><b>08</b> If it went live</div>
+        <div class="section-label"><b>09</b> If it went live</div>
         <h2 class="section-heading">How I'd judge it with a real client</h2>
       </div>
       <div class="rv">
@@ -879,7 +997,7 @@
         <ul>
           <li><i>15s</i><span><b>LinkedIn ad</b>Hook, the switch, CTA. Built for the feed.</span></li>
           <li><i>6s</i><span><b>Bumper</b>“Your system” straight into Sequence. Pure brand recall.</span></li>
-          <li><i>CC</i><span><b>Silent captioned cut</b>Most feeds play muted, so the story has to work without sound.</span></li>
+          <li><i>CC</i><span><b>Silent captioned cut</b>Key words are already on screen, so a fully captioned muted version is a small step. Most feeds play without sound.</span></li>
           <li><i>1:1</i><span><b>Square + vertical</b>Reframed versions for Instagram and mobile placements.</span></li>
         </ul>
       </div>
