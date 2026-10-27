@@ -1011,6 +1011,39 @@
     font-size: 12px;
     color: var(--text3);
   }
+  /* showreel caption + shining case study button */
+  .showreel-meta {
+    margin-top: 22px; display: flex; align-items: center; justify-content: space-between; gap: 20px;
+    text-align: left; flex-wrap: wrap;
+  }
+  .showreel-meta-title { display: block; font-family: var(--font-display); font-size: 18px; font-weight: 600; letter-spacing: -0.01em; color: var(--text); }
+  .showreel-meta-sub { display: block; font-size: 13px; color: var(--text3); margin-top: 2px; }
+  .case-study-cta {
+    position: relative; isolation: isolate; overflow: hidden;
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 13px 26px; border-radius: 100px; text-decoration: none;
+    color: #fff; font-size: 14px; font-weight: 600; letter-spacing: 0.02em;
+    background: linear-gradient(140deg, #5296FF 0%, #2B6EE8 100%);
+    animation: navGlow 2.8s ease-in-out infinite;
+    transition: transform 0.26s cubic-bezier(0.34,1.56,0.64,1), filter 0.26s ease, gap 0.26s cubic-bezier(0.34,1.56,0.64,1);
+  }
+  .case-study-cta::before {
+    content: ''; position: absolute; top: 0; bottom: 0; left: 0; width: 45%; z-index: -1;
+    background: linear-gradient(100deg, transparent 0%, rgba(255,255,255,0.6) 50%, transparent 100%);
+    transform: translateX(-160%) skewX(-20deg);
+    animation: navShine 3.2s ease-in-out infinite; pointer-events: none;
+  }
+  .case-study-cta:hover { transform: translateY(-3px); filter: brightness(1.06); gap: 14px; color: #fff; }
+  .case-study-cta svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+  @media (max-width: 768px) {
+    .showreel-meta { flex-direction: column; align-items: stretch; text-align: center; }
+    .case-study-cta { justify-content: center; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .case-study-cta, .case-study-cta::before { animation: none; }
+    .case-study-cta { box-shadow: 0 6px 22px rgba(63,135,255,0.45); }
+  }
+
   /* case study link on a work card */
   a.portfolio-card-title { display: block; text-decoration: none; transition: color .2s; }
   a.portfolio-card-title:hover { color: var(--accent); }
@@ -2358,19 +2391,29 @@
   </div>
   <div class="showreel-feature reveal reveal-delay-1" style="max-width:900px; margin:0 auto;">
     <div class="showreel-wrap">
-      <div class="yt-thumb large" data-id="2po45hRolZs" data-type="video" data-url="https://youtu.be/2po45hRolZs">
-        <img src="https://i.ytimg.com/vi/2po45hRolZs/maxresdefault.jpg" alt="Showreel" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/2po45hRolZs/hqdefault.jpg'" />
+      <div class="yt-thumb large" data-id="DZ9hEQVkGCw" data-type="video" data-url="https://youtu.be/DZ9hEQVkGCw">
+        <img src="https://i.ytimg.com/vi/DZ9hEQVkGCw/maxresdefault.jpg" alt="Sequence fintech explainer" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/DZ9hEQVkGCw/hqdefault.jpg'" />
         <div class="yt-play-btn">
           <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
         </div>
         <div class="yt-fallback">
           <p>This video can't be embedded here. Watch it on YouTube instead.</p>
-          <a href="https://youtu.be/2po45hRolZs" target="_blank" rel="noopener">
+          <a href="https://youtu.be/DZ9hEQVkGCw" target="_blank" rel="noopener">
             Watch on YouTube
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
         </div>
       </div>
+    </div>
+    <div class="showreel-meta">
+      <div class="showreel-meta-text">
+        <span class="showreel-meta-title">Sequence: Fintech Explainer</span>
+        <span class="showreel-meta-sub">Concept · Script, storyboard, design &amp; animation · 9 days</span>
+      </div>
+      <a href="sequence-case-study.html" class="case-study-cta">
+        Read the case study
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
     </div>
   </div>
 </section>
@@ -2417,22 +2460,21 @@
 
     <div class="portfolio-card reveal reveal-delay-1">
       <div class="video-thumb">
-        <div class="yt-thumb" data-id="DZ9hEQVkGCw" data-type="video" data-url="https://youtu.be/DZ9hEQVkGCw">
-          <img src="https://i.ytimg.com/vi/DZ9hEQVkGCw/maxresdefault.jpg" alt="Sequence fintech explainer" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/DZ9hEQVkGCw/hqdefault.jpg'" />
+        <div class="yt-thumb" data-id="2po45hRolZs" data-type="video" data-url="https://youtu.be/2po45hRolZs">
+          <img src="https://i.ytimg.com/vi/2po45hRolZs/maxresdefault.jpg" alt="SwiftHire product explainer" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/2po45hRolZs/hqdefault.jpg'" />
           <div class="yt-play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
           <div class="yt-fallback">
             <p>This video can't be embedded. Watch it on YouTube.</p>
-            <a href="https://youtu.be/DZ9hEQVkGCw" target="_blank" rel="noopener">Watch on YouTube</a>
+            <a href="https://youtu.be/2po45hRolZs" target="_blank" rel="noopener">Watch on YouTube</a>
           </div>
         </div>
       </div>
       <div class="portfolio-card-info">
         <div>
-          <a href="sequence-case-study.html" class="portfolio-card-title">Sequence: Fintech Explainer</a>
-          <div class="portfolio-card-type">Concept · Script, Design &amp; Animation</div>
-          <a href="sequence-case-study.html" class="case-study-pill">Read case study <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <div class="portfolio-card-title">SwiftHire: Product Explainer</div>
+          <div class="portfolio-card-type">SaaS · UI Animation</div>
         </div>
-        <a href="https://youtu.be/DZ9hEQVkGCw" target="_blank" class="portfolio-card-link" aria-label="Watch on YouTube">
+        <a href="https://youtu.be/2po45hRolZs" target="_blank" class="portfolio-card-link" aria-label="Watch on YouTube">
           <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
         </a>
       </div>

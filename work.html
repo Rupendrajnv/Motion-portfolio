@@ -391,12 +391,20 @@
     box-shadow: 0 8px 24px rgba(63,135,255,0.18); background: rgba(63,135,255,0.04);
   }
   .btn-primary-sm {
+    position: relative; isolation: isolate; overflow: hidden;
+    animation: navGlow 2.8s ease-in-out infinite;
     margin: 16px 10px 0 0; padding: 12px 26px; border-radius: 100px;
     display: inline-flex; align-items: center; gap: 8px;
     color: #fff; font-size: 14px; font-weight: 600;
     background: linear-gradient(140deg, #5296FF 0%, #2B6EE8 100%);
     box-shadow: 0 4px 16px rgba(63,135,255,0.34), inset 0 1px 0 rgba(255,255,255,0.25);
     transition: transform .26s var(--spring), box-shadow .26s;
+  }
+  .btn-primary-sm::before {
+    content: ''; position: absolute; top: 0; bottom: 0; left: 0; width: 45%; z-index: -1;
+    background: linear-gradient(100deg, transparent 0%, rgba(255,255,255,0.6) 50%, transparent 100%);
+    transform: translateX(-160%) skewX(-20deg);
+    animation: navShine 3.2s ease-in-out infinite; pointer-events: none;
   }
   .btn-primary-sm[hidden] { display: none; }
   .btn-primary-sm:hover { transform: translateY(-3px); box-shadow: 0 14px 40px rgba(63,135,255,0.5); }
