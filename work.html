@@ -390,6 +390,17 @@
     border-color: rgba(63,135,255,0.40); color: var(--accent); transform: translateY(-3px);
     box-shadow: 0 8px 24px rgba(63,135,255,0.18); background: rgba(63,135,255,0.04);
   }
+  .btn-primary-sm {
+    margin: 16px 10px 0 0; padding: 12px 26px; border-radius: 100px;
+    display: inline-flex; align-items: center; gap: 8px;
+    color: #fff; font-size: 14px; font-weight: 600;
+    background: linear-gradient(140deg, #5296FF 0%, #2B6EE8 100%);
+    box-shadow: 0 4px 16px rgba(63,135,255,0.34), inset 0 1px 0 rgba(255,255,255,0.25);
+    transition: transform .26s var(--spring), box-shadow .26s;
+  }
+  .btn-primary-sm[hidden] { display: none; }
+  .btn-primary-sm:hover { transform: translateY(-3px); box-shadow: 0 14px 40px rgba(63,135,255,0.5); }
+  .btn-primary-sm svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
   .btn-secondary svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 
   /* ─── RESPONSIVE ─── */
@@ -489,6 +500,10 @@
       </button>
     </div>
     <div id="playerSlot"></div>
+    <a class="btn-primary-sm" id="caseLink" href="sequence-case-study.html" hidden>
+      Read the case study
+      <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
     <a class="btn-secondary" id="ytLink" target="_blank" rel="noopener noreferrer">
       Watch on YouTube
       <svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg>
@@ -524,6 +539,9 @@
       horizontal: ['Lf8rBLJkuhA','nM0lD5PRh0E','bgaZLH8xoJQ','wAwt4o7ThCI'],
       vertical:   ['2slDMyN-4Ac','GVWaNxVGGf4','St0d_IGeN90','d8cbZR2QmsU','bqJkkAsPvpA','CgRdLAhd2GU','jHmEmyvJo-E','LcsdE75CF2M','LcsdE75CF2M','MboGLL4qD3A'] }
   ];
+
+  // videos that have a written case study
+  const CASE_STUDIES = { 'DZ9hEQVkGCw': 'sequence-case-study.html' };
 
   const pad = n => String(n).padStart(2, '0');
   const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;');
@@ -633,6 +651,9 @@
     document.getElementById('dialogTitle').textContent = `${label} — ${n}`;
     document.getElementById('dialogSub').textContent = format === 'horizontal' ? 'Horizontal · 16:9' : 'Vertical · 9:16';
     document.getElementById('ytLink').href = `https://www.youtube.com/watch?v=${id}`;
+    const cs = CASE_STUDIES[id];
+    const caseLink = document.getElementById('caseLink');
+    caseLink.hidden = !cs; if (cs) caseLink.href = cs;
     dialog.classList.toggle('vertical', format === 'vertical');
     slot.innerHTML = `<iframe class="video-player" src="https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&playsinline=1"
       title="${label} ${n}" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen

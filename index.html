@@ -1011,6 +1011,18 @@
     font-size: 12px;
     color: var(--text3);
   }
+  /* case study link on a work card */
+  a.portfolio-card-title { display: block; text-decoration: none; transition: color .2s; }
+  a.portfolio-card-title:hover { color: var(--accent); }
+  .case-study-pill {
+    display: inline-flex; align-items: center; gap: 6px; margin-top: 12px; text-decoration: none;
+    padding: 6px 14px; border-radius: 100px;
+    background: var(--accent-dim); border: 1px solid rgba(63,135,255,0.22);
+    font-size: 12px; font-weight: 600; letter-spacing: 0.02em; color: var(--accent);
+    transition: background .2s, transform .26s cubic-bezier(0.34,1.56,0.64,1), gap .26s cubic-bezier(0.34,1.56,0.64,1);
+  }
+  .case-study-pill:hover { background: rgba(63,135,255,0.16); transform: translateY(-2px); gap: 10px; }
+  .case-study-pill svg { width: 12px; height: 12px; stroke: currentColor; fill: none; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
 
   .portfolio-card-link {
     width: 32px; height: 32px;
@@ -2406,7 +2418,7 @@
     <div class="portfolio-card reveal reveal-delay-1">
       <div class="video-thumb">
         <div class="yt-thumb" data-id="DZ9hEQVkGCw" data-type="video" data-url="https://youtu.be/DZ9hEQVkGCw">
-          <img src="https://i.ytimg.com/vi/DZ9hEQVkGCw/maxresdefault.jpg" alt="Brand Promo Film" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/DZ9hEQVkGCw/hqdefault.jpg'" />
+          <img src="https://i.ytimg.com/vi/DZ9hEQVkGCw/maxresdefault.jpg" alt="Sequence fintech explainer" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/DZ9hEQVkGCw/hqdefault.jpg'" />
           <div class="yt-play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
           <div class="yt-fallback">
             <p>This video can't be embedded. Watch it on YouTube.</p>
@@ -2416,8 +2428,9 @@
       </div>
       <div class="portfolio-card-info">
         <div>
-          <div class="portfolio-card-title">Brand Promo Film</div>
-          <div class="portfolio-card-type">Cinematic · Brand Story</div>
+          <a href="sequence-case-study.html" class="portfolio-card-title">Sequence: Fintech Explainer</a>
+          <div class="portfolio-card-type">Concept · Script, Design &amp; Animation</div>
+          <a href="sequence-case-study.html" class="case-study-pill">Read case study <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
         <a href="https://youtu.be/DZ9hEQVkGCw" target="_blank" class="portfolio-card-link" aria-label="Watch on YouTube">
           <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
