@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Case Studies — Rupendra, Motion Designer &amp; Video Editor</title>
+<meta name="author" content="Rupendra" />
+<meta name="description" content="Three case studies by Rupendra: Dental Origin, S&amp;N Real Estate Investments and Ceva × Bynder." />
+<meta property="og:title" content="Case Studies — Rupendra, Motion Designer &amp; Video Editor" />
+<meta property="og:description" content="Three case studies by Rupendra: Dental Origin, S&amp;N Real Estate Investments and Ceva × Bynder." />
+<meta property="og:type" content="article" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600&display=swap" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" />
+<style>
+
+:root { 
+  --bg: #F6F9FF; --bg2: #EDF3FF; --surface: #FFFFFF;
+  --border: rgba(10,30,90,0.08); --accent: #3F87FF; --accent2: #2060E0;
+  --accent-dim: rgba(63,135,255,0.09); --accent-glow: rgba(63,135,255,0.22);
+  --text: #0B1120; --text2: #47587A; --text3: #8A9BB8;
+  --font-display: 'Space Grotesk', sans-serif; --font-body: 'Inter', sans-serif;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+ }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--text); font-family: var(--font-body); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 8px; }
+  /* ─── NAV (identical to main site) ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 0 5vw; height: 72px;
+    display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.4s, background 0.4s;
+  }
+  nav.scrolled {
+    background: rgba(246,249,255,0.88);
+    -webkit-backdrop-filter: blur(24px); backdrop-filter: blur(24px);
+    border-color: rgba(10,30,90,0.07);
+    box-shadow: 0 2px 24px rgba(0,0,0,0.07);
+  }
+  .nav-home-btn {
+    display: flex; align-items: center; justify-content: center;
+    width: 40px; height: 40px; border-radius: 10px;
+    color: var(--text2); transition: color 0.22s, background 0.22s;
+  }
+  .nav-home-btn:hover { color: var(--accent); background: var(--accent-dim); }
+  .nav-home-btn svg { display: block; flex-shrink: 0; }
+  .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
+  .nav-links a {
+    position: relative; color: var(--text2);
+    font-size: 13px; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1.5px;
+    background: var(--accent); border-radius: 2px;
+    transition: width 0.28s cubic-bezier(0.34,1.56,0.64,1);
+  }
+  .nav-links a:hover::after { width: 100%; }
+  .nav-links a.nav-glow {
+    position: relative; isolation: isolate; overflow: hidden;
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 9px 20px; border-radius: 100px;
+    font-size: 13px; font-weight: 600; letter-spacing: 0.04em;
+    transition: transform 0.26s cubic-bezier(0.34,1.56,0.64,1), filter 0.26s ease, color 0.2s;
+  }
+  .nav-links a.nav-glow::after { content: none; }
+  .nav-links a.nav-glow::before {
+    content: ''; position: absolute; top: 0; bottom: 0; left: 0; width: 45%; z-index: -1;
+    background: linear-gradient(100deg, transparent 0%, rgba(255,255,255,0.6) 50%, transparent 100%);
+    transform: translateX(-160%) skewX(-20deg);
+    animation: navShine 4.2s ease-in-out infinite; pointer-events: none;
+  }
+  .nav-links a.nav-glow:hover { transform: translateY(-2px); filter: brightness(1.06); }
+  .nav-links a.nav-glow:active { transform: translateY(0) scale(0.98); }
+  .nav-links a.nav-glow--rive {
+    color: var(--accent); background: rgba(255,255,255,0.92);
+    border: 1px solid rgba(63,135,255,0.45);
+    animation: navGlowSoft 2.8s ease-in-out infinite;
+  }
+  .nav-links a.nav-glow--rive:hover { color: var(--accent2); }
+  .nav-links a.nav-glow--rive::before { background: linear-gradient(100deg, transparent 0%, rgba(63,135,255,0.20) 50%, transparent 100%); }
+  .nav-glow-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex-shrink: 0; animation: pulse 2s infinite; }
+  .nav-links a.nav-glow--work {
+    color: #FFFFFF; background: linear-gradient(140deg, #5296FF 0%, #2B6EE8 100%);
+    animation: navGlow 2.8s ease-in-out infinite; animation-delay: -1.4s;
+  }
+  .nav-links a.nav-glow--work:hover { color: #FFFFFF; }
+  .nav-links a.nav-glow--work::before { animation-delay: 2.1s; }
+  .nav-links a.nav-glow--work svg { width: 12px; height: 12px; transition: transform 0.26s cubic-bezier(0.34,1.56,0.64,1); }
+  .nav-links a.nav-glow--work:hover svg { transform: translate(2px,-2px); }
+  @keyframes navGlow {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(63,135,255,0), 0 3px 12px rgba(63,135,255,0.30), inset 0 1px 0 rgba(255,255,255,0.25); }
+    50%      { box-shadow: 0 0 0 5px rgba(63,135,255,0.14), 0 8px 30px rgba(63,135,255,0.60), inset 0 1px 0 rgba(255,255,255,0.25); }
+  }
+  @keyframes navGlowSoft {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(63,135,255,0), 0 2px 10px rgba(63,135,255,0.14); border-color: rgba(63,135,255,0.35); }
+    50%      { box-shadow: 0 0 0 5px rgba(63,135,255,0.10), 0 6px 26px rgba(63,135,255,0.40); border-color: rgba(63,135,255,0.80); }
+  }
+  @keyframes navShine {
+    0%        { transform: translateX(-160%) skewX(-20deg); }
+    45%, 100% { transform: translateX(320%) skewX(-20deg); }
+  }
+
+  /* ─── CUSTOM CURSOR (identical to main site) ─── */
+  .cursor {
+    position: fixed; top: 0; left: 0; z-index: 99999; pointer-events: none;
+    width: 8px; height: 8px; border-radius: 50%;
+    background: #3F87FF; box-shadow: 0 0 0 2px rgba(63,135,255,0.20);
+    transition: transform 0.15s var(--ease);
+  }
+  .cursor-ring {
+    position: fixed; top: 0; left: 0; z-index: 99998; pointer-events: none;
+    width: 36px; height: 36px; border-radius: 50%;
+    border: 1px solid rgba(63,135,255,0.45);
+    transition: all 0.08s linear;
+  }
+  .cursor.hover { transform: scale(3); background: rgba(63,135,255,0.3); }
+  .cursor-ring.hover { opacity: 0; }
+
+
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
+  @media (max-width: 800px) {
+    nav { padding: 0 20px; }
+    .nav-links { gap: 10px; }
+    .nav-links li:not(.nav-glow-li) { display: none; }
+    .nav-links a.nav-glow { padding: 8px 14px; font-size: 12px; }
+    .cursor, .cursor-ring { display: none; }
+  }
+  @media (hover: none) { .cursor, .cursor-ring { display: none; } }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { transition: none !important; animation: none !important; }
+    html { scroll-behavior: auto; }
+  }
+
+.shell { max-width: 1320px; margin: 0 auto; padding: 0 48px; }
+.intro { padding: 160px 0 64px; max-width: 880px; }
+.eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin-bottom: 22px; }
+.eyebrow::before { content: ''; width: 24px; height: 1.5px; background: var(--accent); }
+h1 { font-family: var(--font-display); font-weight: 600; font-size: clamp(42px, 6vw, 80px); line-height: 1.02; letter-spacing: -0.035em; }
+h1 span { color: var(--accent); }
+.intro p { font-size: 19px; color: var(--text2); margin-top: 24px; max-width: 640px; }
+.cases { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; padding-bottom: 96px; }
+.case { display: flex; flex-direction: column; background: var(--surface); border: 1px solid var(--border); border-radius: 22px; overflow: hidden; box-shadow: 0 2px 6px rgba(10,30,90,.05), 0 20px 50px -18px rgba(10,30,90,.18); transition: transform .45s var(--ease), box-shadow .45s var(--ease), border-color .3s; }
+.case:hover { transform: translateY(-8px); border-color: rgba(63,135,255,.38); box-shadow: 0 4px 10px rgba(10,30,90,.06), 0 36px 70px -20px rgba(63,135,255,.35); }
+.thumb { position: relative; aspect-ratio: 4/3; overflow: hidden; background: var(--c); }
+.thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s var(--ease); }
+.case:hover .thumb img { transform: scale(1.04); }
+.num { position: absolute; top: 18px; left: 18px; background: rgba(255,255,255,.92); color: var(--text); font: 600 12px var(--font-body); letter-spacing: .08em; padding: 6px 12px; border-radius: 100px; }
+.body { display: flex; flex-direction: column; gap: 12px; padding: 28px 28px 30px; flex: 1; }
+.tag { align-self: flex-start; font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--c); background: var(--cd); padding: 6px 12px; border-radius: 100px; }
+.case h2 { font-family: var(--font-display); font-weight: 600; font-size: 28px; line-height: 1.1; letter-spacing: -0.025em; }
+.case p { color: var(--text2); font-size: 16px; }
+.meta { display: flex; gap: 8px; flex-wrap: wrap; margin-top: auto; padding-top: 10px; font-size: 12px; color: var(--text3); font-weight: 500; letter-spacing: .04em; text-transform: uppercase; }
+.go { display: inline-flex; align-items: center; gap: 8px; margin-top: 6px; font-weight: 600; font-size: 15px; color: var(--accent); transition: gap .3s var(--ease); }
+.case:hover .go { gap: 14px; }
+footer { display: flex; align-items: center; gap: 20px; padding: 28px 0 40px; border-top: 1px solid var(--border); font-size: 12px; color: var(--text3); }
+.footer-name { margin-right: auto; font-family: var(--font-display); font-size: 18px; font-weight: 600; letter-spacing: -0.02em; color: var(--text); }
+.footer-name span { color: var(--accent); }
+.rv { opacity: 0; transform: translateY(24px); transition: opacity .9s var(--ease), transform .9s var(--ease); }
+.rv.in { opacity: 1; transform: none; }
+@media (max-width: 1080px) { .cases { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 700px) { .shell { padding: 0 18px; } .intro { padding: 120px 0 40px; } .cases { grid-template-columns: 1fr; } .intro p { font-size: 17px; } }
+
+</style>
+</head>
+<body>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<nav id="navbar">
+  <a href="./" class="nav-logo nav-home-btn" aria-label="Home">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5z"/><polyline points="9 21 9 13 15 13 15 21"/></svg>
+  </a>
+  <ul class="nav-links">
+    <li><a href="./#about">About</a></li>
+    <li><a href="./#services">Services</a></li>
+    <li><a href="./#reviews">Reviews</a></li>
+    <li class="nav-glow-li"><a href="case-studies.html" class="nav-glow nav-glow--rive" aria-current="page"><span class="nav-glow-dot"></span>Case Studies</a></li>
+    <li class="nav-glow-li"><a href="work.html" class="nav-glow nav-glow--work">All Work <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a></li>
+  </ul>
+</nav>
+<main>
+<div class="shell">
+<section class="intro rv"><p class="eyebrow">Case studies</p><h1>Three projects,<br><span>start to finish.</span></h1>
+<p>How I think, what I decided, what went wrong and what I'd do differently. Real client work, told honestly.</p></section>
+<section class="cases" aria-label="Case studies"><a class="case rv" href="dental-origin.html" style="--c:#5B3DF5;--cd:rgba(91,61,245,.10)">
+  <div class="thumb"><img src="images/case-dental/founder-box.webp" alt="Dental Origin case study cover" width="1400" height="788" loading="lazy" decoding="async" /><span class="num">01</span></div>
+  <div class="body"><span class="tag">Paid social campaign</span><h2>Dental Origin</h2><p>One founder recording turned into 15 campaign assets: a master film, three hook tests, an offer video, statics and carousels.</p>
+  <div class="meta">2026 · Freelance · Hooks · Edit · Motion</div><span class="go">Read case study <span aria-hidden="true">→</span></span></div>
+</a><a class="case rv" href="sn-real-estate.html" style="--c:#8A2436;--cd:rgba(138,36,54,.10)">
+  <div class="thumb"><img src="images/case-sn/cover-master.webp" alt="S&amp;N Real Estate Investments case study cover" width="1280" height="720" loading="lazy" decoding="async" /><span class="num">02</span></div>
+  <div class="body"><span class="tag">Weekly content engine</span><h2>S&amp;N Real Estate Investments</h2><p>One master video became fourteen pieces a week, for 15 months, as a one-person content team.</p>
+  <div class="meta">2024 – 2026 · Full-time · Script to publishing</div><span class="go">Read case study <span aria-hidden="true">→</span></span></div>
+</a><a class="case rv" href="ceva-bynder.html" style="--c:#2E46F0;--cd:rgba(46,70,240,.10)">
+  <div class="thumb"><img src="images/case-ceva/psd-after.webp" alt="Ceva × Bynder case study cover" width="1416" height="858" loading="lazy" decoding="async" /><span class="num">03</span></div>
+  <div class="body"><span class="tag">Translation-ready templates</span><h2>Ceva × Bynder</h2><p>Rebuilt agency PSD and After Effects files so country teams could translate ads in Bynder without a designer.</p>
+  <div class="meta">2023 · Freelance · Templates · Bynder</div><span class="go">Read case study <span aria-hidden="true">→</span></span></div>
+</a></section>
+<footer><a class="footer-name" href="./">Rupendra<span>.</span></a><span>© 2026 Rupendra</span></footer>
+</div>
+</main>
+<script>
+  const navbar = document.getElementById('navbar');
+  const onScroll = () => navbar.classList.toggle('scrolled', window.scrollY > 40);
+  window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+  const cursor = document.getElementById('cursor'), ring = document.getElementById('cursorRing');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cursor.style.left = (mx - 4) + 'px'; cursor.style.top = (my - 4) + 'px'; });
+  (function loop() { rx += (mx - rx - 18) * 0.12; ry += (my - ry - 18) * 0.12; ring.style.left = rx + 'px'; ring.style.top = ry + 'px'; requestAnimationFrame(loop); })();
+  document.addEventListener('mouseover', e => { const on = !!e.target.closest('a, button'); cursor.classList.toggle('hover', on); ring.classList.toggle('hover', on); });
+  const io = new IntersectionObserver(es => es.forEach(x => { if (x.isIntersecting) { x.target.classList.add('in'); io.unobserve(x.target); } }), { rootMargin: '0px 0px -8% 0px' });
+  document.querySelectorAll('.rv').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
