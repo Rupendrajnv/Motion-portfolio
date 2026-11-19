@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Dental Origin case study — Rupendra</title>
+<meta name="author" content="Rupendra" />
+<meta name="description" content="How one founder recording became a 15-asset paid social campaign for Dental Origin: hooks, a master film, statics and carousels." />
+<meta property="og:title" content="Dental Origin case study — Rupendra" />
+<meta property="og:description" content="How one founder recording became a 15-asset paid social campaign for Dental Origin: hooks, a master film, statics and carousels." />
+<meta property="og:type" content="article" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600&display=swap" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600&family=Hanken+Grotesk:wght@400;500&family=JetBrains+Mono:wght@500&display=swap" />
+<style>
+
+:root { 
+  --bg: #F6F9FF; --bg2: #EDF3FF; --surface: #FFFFFF;
+  --border: rgba(10,30,90,0.08); --accent: #3F87FF; --accent2: #2060E0;
+  --accent-dim: rgba(63,135,255,0.09); --accent-glow: rgba(63,135,255,0.22);
+  --text: #0B1120; --text2: #47587A; --text3: #8A9BB8;
+  --font-display: 'Space Grotesk', sans-serif; --font-body: 'Inter', sans-serif;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --a: #F8F8FC; --b: #EFEBFF; --ink: #14123A; --soft: #403E60; --muted: #706E8C; --line: #DCD8F0;
+  --acc: #5B3DF5; --card: #FFFFFF; --close: linear-gradient(100deg,#4A2CE2 0%,#168CD6 100%); --close-fg: #FFFFFF; --close-mu: #D9D4FF; --close-line: rgba(255,255,255,0.28);
+  --fd: 'Bricolage Grotesque', sans-serif; --fb: 'Hanken Grotesk', sans-serif; --fm: 'JetBrains Mono', monospace; --hw: 600; --hls: -0.03em;
+  --l2-style: normal; --l2-color: #5B3DF5; --r: 16px;
+  --shadow: 0 2px 6px rgba(50,30,130,.10), 0 22px 48px -12px rgba(50,30,130,.22); --shadow-card: 0 1px 3px rgba(50,30,130,.06), 0 14px 32px -10px rgba(50,30,130,.12);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: var(--a); color: var(--ink); font-family: var(--fb); font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; text-decoration: none; }
+:focus-visible { outline: 2px solid var(--acc); outline-offset: 3px; border-radius: 6px; }
+  /* ─── NAV (identical to main site) ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 0 5vw; height: 72px;
+    display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.4s, background 0.4s;
+  }
+  nav.scrolled {
+    background: rgba(246,249,255,0.88);
+    -webkit-backdrop-filter: blur(24px); backdrop-filter: blur(24px);
+    border-color: rgba(10,30,90,0.07);
+    box-shadow: 0 2px 24px rgba(0,0,0,0.07);
+  }
+  .nav-home-btn {
+    display: flex; align-items: center; justify-content: center;
+    width: 40px; height: 40px; border-radius: 10px;
+    color: var(--text2); transition: color 0.22s, background 0.22s;
+  }
+  .nav-home-btn:hover { color: var(--accent); background: var(--accent-dim); }
+  .nav-home-btn svg { display: block; flex-shrink: 0; }
+  .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
+  .nav-links a {
+    position: relative; color: var(--text2);
+    font-size: 13px; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1.5px;
+    background: var(--accent); border-radius: 2px;
+    transition: width 0.28s cubic-bezier(0.34,1.56,0.64,1);
+  }
+  .nav-links a:hover::after { width: 100%; }
+  .nav-links a.nav-glow {
+    position: relative; isolation: isolate; overflow: hidden;
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 9px 20px; border-radius: 100px;
+    font-size: 13px; font-weight: 600; letter-spacing: 0.04em;
+    transition: transform 0.26s cubic-bezier(0.34,1.56,0.64,1), filter 0.26s ease, color 0.2s;
+  }
+  .nav-links a.nav-glow::after { content: none; }
+  .nav-links a.nav-glow::before {
+    content: ''; position: absolute; top: 0; bottom: 0; left: 0; width: 45%; z-index: -1;
+    background: linear-gradient(100deg, transparent 0%, rgba(255,255,255,0.6) 50%, transparent 100%);
+    transform: translateX(-160%) skewX(-20deg);
+    animation: navShine 4.2s ease-in-out infinite; pointer-events: none;
+  }
+  .nav-links a.nav-glow:hover { transform: translateY(-2px); filter: brightness(1.06); }
+  .nav-links a.nav-glow:active { transform: translateY(0) scale(0.98); }
+  .nav-links a.nav-glow--rive {
+    color: var(--accent); background: rgba(255,255,255,0.92);
+    border: 1px solid rgba(63,135,255,0.45);
+    animation: navGlowSoft 2.8s ease-in-out infinite;
+  }
+  .nav-links a.nav-glow--rive:hover { color: var(--accent2); }
+  .nav-links a.nav-glow--rive::before { background: linear-gradient(100deg, transparent 0%, rgba(63,135,255,0.20) 50%, transparent 100%); }
+  .nav-glow-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex-shrink: 0; animation: pulse 2s infinite; }
+  .nav-links a.nav-glow--work {
+    color: #FFFFFF; background: linear-gradient(140deg, #5296FF 0%, #2B6EE8 100%);
+    animation: navGlow 2.8s ease-in-out infinite; animation-delay: -1.4s;
+  }
+  .nav-links a.nav-glow--work:hover { color: #FFFFFF; }
+  .nav-links a.nav-glow--work::before { animation-delay: 2.1s; }
+  .nav-links a.nav-glow--work svg { width: 12px; height: 12px; transition: transform 0.26s cubic-bezier(0.34,1.56,0.64,1); }
+  .nav-links a.nav-glow--work:hover svg { transform: translate(2px,-2px); }
+  @keyframes navGlow {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(63,135,255,0), 0 3px 12px rgba(63,135,255,0.30), inset 0 1px 0 rgba(255,255,255,0.25); }
+    50%      { box-shadow: 0 0 0 5px rgba(63,135,255,0.14), 0 8px 30px rgba(63,135,255,0.60), inset 0 1px 0 rgba(255,255,255,0.25); }
+  }
+  @keyframes navGlowSoft {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(63,135,255,0), 0 2px 10px rgba(63,135,255,0.14); border-color: rgba(63,135,255,0.35); }
+    50%      { box-shadow: 0 0 0 5px rgba(63,135,255,0.10), 0 6px 26px rgba(63,135,255,0.40); border-color: rgba(63,135,255,0.80); }
+  }
+  @keyframes navShine {
+    0%        { transform: translateX(-160%) skewX(-20deg); }
+    45%, 100% { transform: translateX(320%) skewX(-20deg); }
+  }
+
+  /* ─── CUSTOM CURSOR (identical to main site) ─── */
+  .cursor {
+    position: fixed; top: 0; left: 0; z-index: 99999; pointer-events: none;
+    width: 8px; height: 8px; border-radius: 50%;
+    background: #3F87FF; box-shadow: 0 0 0 2px rgba(63,135,255,0.20);
+    transition: transform 0.15s var(--ease);
+  }
+  .cursor-ring {
+    position: fixed; top: 0; left: 0; z-index: 99998; pointer-events: none;
+    width: 36px; height: 36px; border-radius: 50%;
+    border: 1px solid rgba(63,135,255,0.45);
+    transition: all 0.08s linear;
+  }
+  .cursor.hover { transform: scale(3); background: rgba(63,135,255,0.3); }
+  .cursor-ring.hover { opacity: 0; }
+
+
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
+  @media (max-width: 800px) {
+    nav { padding: 0 20px; }
+    .nav-links { gap: 10px; }
+    .nav-links li:not(.nav-glow-li) { display: none; }
+    .nav-links a.nav-glow { padding: 8px 14px; font-size: 12px; }
+    .cursor, .cursor-ring { display: none; }
+  }
+  @media (hover: none) { .cursor, .cursor-ring { display: none; } }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { transition: none !important; animation: none !important; }
+    html { scroll-behavior: auto; }
+  }
+
+.wrap { max-width: 1248px; margin: 0 auto; padding: 0 24px; }
+.sec { padding: 104px 0 112px; }
+.sec--a { background: var(--a); } .sec--b { background: var(--b); }
+.cover { padding-top: 128px; }
+.meta { display: flex; justify-content: space-between; gap: 16px; padding-bottom: 18px; border-bottom: 1px solid var(--line); margin-bottom: 48px; font-family: var(--fm); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.label { font-family: var(--fm); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--acc); margin-bottom: 14px; }
+.mono { font-family: var(--fm); font-size: 12px; letter-spacing: .07em; text-transform: uppercase; color: var(--muted); }
+h1, h2, h3, .big, .stat b, .next-t { font-family: var(--fd); font-weight: var(--hw); letter-spacing: var(--hls); }
+h1 { font-size: clamp(48px, 8.4vw, 124px); line-height: .98; margin-bottom: 44px; }
+h2 { font-size: clamp(40px, 6.4vw, 92px); line-height: 1; margin-bottom: 56px; }
+.l2 { font-style: var(--l2-style); color: var(--l2-color); }
+h3 { font-size: clamp(22px, 2.2vw, 30px); line-height: 1.12; margin: 10px 0 10px; }
+.lead { font-size: clamp(17px, 1.5vw, 21px); line-height: 1.55; color: var(--soft); max-width: 820px; }
+.lead + .lead { margin-top: 14px; }
+.role { font-weight: 500; font-size: 17px; line-height: 1.55; margin-top: 8px; }
+.two { display: grid; grid-template-columns: 1.1fr 1fr; gap: 56px; align-items: start; }
+.intro { margin-bottom: 64px; }
+.fig img { border-radius: var(--r); box-shadow: var(--shadow); width: 100%; }
+.fig figcaption { font-family: var(--fm); font-size: 11px; letter-spacing: .07em; text-transform: uppercase; color: var(--muted); margin-top: 12px; line-height: 1.5; }
+.mrow { display: flex; gap: 22px; align-items: flex-start; }
+.mrow-i { min-width: 0; }
+.grid { display: grid; gap: 24px; }
+.g2 { grid-template-columns: repeat(2, 1fr); } .g3 { grid-template-columns: repeat(3, 1fr); } .g4 { grid-template-columns: repeat(4, 1fr); } .g5 { grid-template-columns: repeat(5, 1fr); } .g8 { grid-template-columns: repeat(8, 1fr); gap: 14px; }
+.box { background: var(--card); border-radius: var(--r); padding: 28px; box-shadow: var(--shadow-card); border: 1px solid transparent; }
+.box.hl, .col.hl { border-color: var(--acc); }
+.box p:not(.n), .col p:not(.n) { color: var(--soft); font-size: 16px; line-height: 1.55; }
+.col { border-top: 1px solid var(--line); padding-top: 22px; }
+.col.hl { border-top: 1px solid var(--acc); border-left: 0; border-right: 0; border-bottom: 0; }
+.n { color: var(--muted); } .hl .n { color: var(--acc); }
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; border-top: 1px solid var(--line); margin-top: 72px; padding-top: 40px; }
+.stat b { display: block; font-size: clamp(44px, 6vw, 88px); line-height: 1; margin-bottom: 14px; }
+.stat:first-child b { color: var(--acc); }
+.block { margin-top: 72px; }
+.block > .mono:first-child, .sub { margin-bottom: 18px; color: var(--ink); }
+.note { font-size: 15px; color: var(--muted); margin-top: 28px; max-width: 820px; }
+.quote { font-family: var(--fd); font-style: var(--l2-style); font-weight: var(--hw); font-size: clamp(30px, 4.4vw, 64px); line-height: 1.05; letter-spacing: var(--hls); margin: 14px 0 22px; max-width: 1100px; }
+.lesson { border-top: 1px solid var(--line); margin-top: 72px; padding-top: 32px; }
+.lesson .big { font-size: clamp(28px, 3.6vw, 52px); line-height: 1.1; font-style: var(--l2-style); max-width: 1100px; margin-bottom: 20px; }
+.chips { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.chip { background: var(--card); border: 1px solid var(--line); border-radius: 100px; padding: 10px 18px; font-weight: 500; font-size: 15px; }
+.chip.hl { border-color: var(--acc); color: var(--acc); }
+.arrow { color: var(--muted); }
+.table .trow { display: grid; grid-template-columns: 80px 1.2fr .5fr .7fr 1.6fr; gap: 16px; align-items: center; border-top: 1px solid var(--line); padding: 20px 0; }
+.table .trow:last-child { border-bottom: 1px solid var(--line); }
+.trow b { font-family: var(--fd); font-weight: var(--hw); font-size: 40px; line-height: 1; color: var(--acc); }
+.trow .tn { font-weight: 500; font-size: 19px; }
+.trow .td { color: var(--soft); font-size: 16px; }
+.flow { display: flex; gap: 14px; align-items: stretch; }
+.flow .box { flex: 1; padding: 22px; }
+.flow .box h3 { font-family: var(--fb); font-weight: 500; font-size: 19px; letter-spacing: 0; margin: 10px 0 6px; }
+.flow .box p:not(.n) { font-size: 15px; color: var(--muted); }
+.flow .ar { align-self: center; color: var(--muted); font-size: 22px; }
+.close { background: var(--close); color: var(--close-fg); }
+.close .meta { color: var(--close-mu); border-color: var(--close-line); }
+.close .label { color: var(--close-fg); }
+.close .l2 { color: var(--close-l2, var(--close-fg)); }
+.lrows { border-bottom: 1px solid var(--close-line); }
+.lrow { display: grid; grid-template-columns: 1fr 1.4fr .8fr auto; gap: 16px; align-items: center; border-top: 1px solid var(--close-line); padding: 16px 0; }
+.lname { font-weight: 500; font-size: 18px; }
+.ldesc { color: var(--close-mu); font-size: 16px; }
+.close .mono { color: var(--close-mu); }
+.pill { display: inline-flex; gap: 8px; align-items: center; justify-content: center; border: 1px solid var(--close-fg); border-radius: 100px; padding: 9px 20px; font-weight: 500; font-size: 14px; white-space: nowrap; transition: background .2s, color .2s, transform .2s; }
+.pill:hover { background: var(--close-fg); color: var(--close); transform: translateY(-2px); }
+.pill--off { opacity: .5; }
+.next { display: block; margin-top: 80px; padding: 36px 40px; border: 1px solid var(--close-line); border-radius: var(--r); transition: background .25s, transform .25s; }
+.next:hover { background: rgba(255,255,255,0.08); transform: translateY(-3px); }
+.next .mono { display: block; margin-bottom: 10px; }
+.next-t { display: block; font-size: clamp(30px, 4vw, 54px); line-height: 1.05; }
+.next-l { display: block; color: var(--close-mu); margin-top: 10px; }
+.foot { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-top: 56px; }
+.foot a:hover { color: var(--close-fg); }
+.rv { opacity: 0; transform: translateY(18px); transition: opacity .8s var(--ease), transform .8s var(--ease); }
+.rv.in { opacity: 1; transform: none; }
+@media (max-width: 960px) {
+  .two { grid-template-columns: 1fr; gap: 36px; }
+  .g3, .g4 { grid-template-columns: repeat(2, 1fr); }
+  .g5 { grid-template-columns: repeat(3, 1fr); }
+  .g8 { grid-template-columns: repeat(4, 1fr); }
+  .stats { grid-template-columns: repeat(2, 1fr); row-gap: 36px; }
+  .table .trow { grid-template-columns: 56px 1fr 1fr; }
+  .table .trow .td { grid-column: 2 / -1; }
+  .flow { flex-direction: column; } .flow .ar { transform: rotate(90deg); }
+  .lrow { grid-template-columns: 1fr auto; } .lrow .ldesc, .lrow .lfmt { grid-column: 1; }
+  .lrow .pill { grid-row: 1 / span 3; grid-column: 2; }
+}
+@media (max-width: 640px) {
+  body { font-size: 16px; }
+  .sec { padding: 72px 0 80px; } .cover { padding-top: 104px; }
+  .meta { flex-direction: column; gap: 6px; margin-bottom: 36px; }
+  h2 { margin-bottom: 40px; }
+  .g2, .g3, .g4 { grid-template-columns: 1fr; }
+  .g5 { grid-template-columns: repeat(2, 1fr); }
+  .grid.imgs { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .mrow { gap: 10px; }
+  .mrow.wrapm { flex-wrap: wrap; }
+  .mrow.wrapm .mrow-i:first-child { flex-basis: 100% !important; }
+  .fig figcaption { font-size: 10px; }
+  .block { margin-top: 56px; }
+  .next { padding: 26px 22px; }
+}
+
+.close { --close-l2: #B2ECFF; }
+.hook .fig img { border-radius: var(--r) var(--r) 0 0; box-shadow: none; aspect-ratio: 392/300; object-fit: cover; }
+.hook { background: var(--card); border-radius: var(--r); box-shadow: var(--shadow-card); overflow: hidden; }
+.hook .hb { padding: 24px 26px 28px; }
+.hook .hq { font-family: var(--fd); font-weight: 500; font-size: 22px; line-height: 1.25; letter-spacing: -0.01em; margin-top: 10px; }
+.before { background: var(--card); border-radius: var(--r); box-shadow: var(--shadow-card); padding: 30px 32px; }
+.before .hq { font-family: var(--fd); font-weight: 500; font-size: clamp(22px, 2.4vw, 30px); line-height: 1.2; margin: 12px 0; }
+.call { border-left: 3px solid var(--acc); padding: 6px 0 6px 24px; }
+.call .quote { font-size: clamp(26px, 3.2vw, 44px); }
+.vrow .fig img { aspect-ratio: 9/16; object-fit: cover; }
+@media (max-width: 640px) { .vrow { grid-template-columns: repeat(2, 1fr) !important; } }
+
+
+</style>
+</head>
+<body>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<nav id="navbar">
+  <a href="./" class="nav-logo nav-home-btn" aria-label="Home">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5z"/><polyline points="9 21 9 13 15 13 15 21"/></svg>
+  </a>
+  <ul class="nav-links">
+    <li><a href="./#about">About</a></li>
+    <li><a href="./#services">Services</a></li>
+    <li><a href="./#reviews">Reviews</a></li>
+    <li class="nav-glow-li"><a href="case-studies.html" class="nav-glow nav-glow--rive" aria-current="page"><span class="nav-glow-dot"></span>Case Studies</a></li>
+    <li class="nav-glow-li"><a href="work.html" class="nav-glow nav-glow--work">All Work <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a></li>
+  </ul>
+</nav>
+<main>
+<header class="sec sec--b cover"><div class="wrap">
+<div class="meta"><span>Case study · Dental Origin</span><span>2026 · Freelance, remote</span></div>
+<p class="label">Paid social campaign</p>
+<h1>Dental Origin campaign.<br><span class="l2">Fifteen assets.</span></h1>
+<div class="two intro"><p class="lead">Dental Origin makes take-home whitening kits that dental practices sell under their own brand. The founder recorded his script on camera. I turned that footage into a full campaign: a master film, three hook versions, an offer video, five static ads and five carousels.</p><div><p class="mono">My role</p><p class="role">Hook direction → Edit → Motion → Audio fix → Statics &amp; carousels → Revisions</p></div></div>
+<div class="mrow wrapm"><div class="mrow-i" style="flex:1.7699 1 0"><figure class="fig "><img src="images/case-dental/cover-master.webp" alt="Master film end card with the book-a-call button" width="1400" height="791" loading="lazy" decoding="async" /><figcaption>Master · 16:9 · 69s</figcaption></figure></div><div class="mrow-i" style="flex:0.5668 1 0"><figure class="fig "><img src="images/case-dental/hook1.webp" alt="Hook 1 frame: dentist at work with the word mistake" width="700" height="1235" loading="lazy" decoding="async" /><figcaption>Hook 1 · 9:16</figcaption></figure></div><div class="mrow-i" style="flex:0.5604 1 0"><figure class="fig "><img src="images/case-dental/hook2.webp" alt="Hook 2 frame: branded whitening kit, Customized for your brand" width="700" height="1249" loading="lazy" decoding="async" /><figcaption>Hook 2 · 9:16</figcaption></figure></div><div class="mrow-i" style="flex:0.5604 1 0"><figure class="fig "><img src="images/case-dental/offer.webp" alt="Offer video frame: a fan of 14-day cards" width="700" height="1249" loading="lazy" decoding="async" /><figcaption>Offer angle · 9:16</figcaption></figure></div></div>
+<div class="stats"><div class="stat rv"><b>15</b><span class="mono">Assets from one recording</span></div><div class="stat rv"><b>69s</b><span class="mono">Master film</span></div><div class="stat rv"><b>3</b><span class="mono">Hook versions</span></div><div class="stat rv"><b>1</b><span class="mono">Person, start to finish</span></div></div>
+</div></header>
+<section class="sec sec--a"><div class="wrap">
+<div class="meta"><span>01 · The problem</span><span>Why practices lose the sale</span></div>
+<p class="label">Context</p>
+<h2 class="rv">Patients want whiter teeth.<br><span class="l2">The practice loses the sale.</span></h2>
+<div class="grid g3"><div class="box rv"><p class="mono n">01</p><h3>Patient asks</h3><p>They ask about whitening during a normal visit.</p></div><div class="box rv"><p class="mono n">02</p><h3>$500 in the chair</h3><p>Whitening in the dental chair costs around $500. For most patients, that's too much.</p></div><div class="box hl rv"><p class="mono n">03</p><h3>Sale walks out</h3><p>They buy a generic kit online or at a big store instead.</p></div></div><div class="block"><div class="two "><div><p class="label">What Dental Origin sells</p><p class="lead rv">Take-home whitening kits, branded with each practice's own logo, colours and packaging. Patients get an affordable option from the dentist they already trust.</p><p class="label" style="margin-top:36px">The campaign's job</p><p class="lead rv">Paid social ads that get practice owners to book a call with Dental Origin. The audience is dentists, not patients.</p></div><div><figure class="fig "><img src="images/case-dental/founder-box.webp" alt="The founder holding a practice-branded whitening kit" width="1400" height="788" loading="lazy" decoding="async" /><figcaption>From the master film: the founder with a practice-branded kit</figcaption></figure></div></div></div>
+</div></section>
+<section class="sec sec--b"><div class="wrap">
+<div class="meta"><span>02 · The hook</span><span>The first 3 seconds</span></div>
+<p class="label">The decision</p>
+<h2 class="rv">Lead with the dentist,<br><span class="l2">not the founder.</span></h2>
+<div class="before rv"><p class="mono">Before · How the master film opens</p><p class="hq">“Hey, you've probably seen our custom branded teeth whitening kits all over your feed. My name is…”</p><p style="color:var(--soft)">It starts with the speaker. That works for people who already know the brand, but a cold ad needs to name the viewer's problem first.</p></div><div class="block"><p class="mono sub">After · Three openings for the short ads</p><div class="grid g3"><div class="hook rv"><figure class="fig "><img src="images/case-dental/hook1.webp" alt="Hook 1 · Fear of loss" width="700" height="1235" loading="lazy" decoding="async" /></figure><div class="hb"><p class="label">Hook 1 · Fear of loss</p><p class="hq">“Dentists, avoid this mistake when selling teeth whitening.”</p></div></div><div class="hook rv"><figure class="fig "><img src="images/case-dental/hook2.webp" alt="Hook 2 · Curiosity" width="700" height="1249" loading="lazy" decoding="async" /></figure><div class="hb"><p class="label">Hook 2 · Curiosity</p><p class="hq">“Dentist. The real reason you're not selling teeth whitening is this.”</p></div></div><div class="hook rv"><figure class="fig "><img src="images/case-dental/hook3.webp" alt="Hook 3 · Call-out" width="700" height="1249" loading="lazy" decoding="async" /></figure><div class="hb"><p class="label">Hook 3 · Call-out</p><p class="hq">“If you're a dentist struggling to sell teeth whitening, listen carefully.”</p></div></div></div></div><div class="block"><p class="mono sub">The same body after every hook · about 50 seconds</p><div class="chips"><span class="chip">Demand is high</span><span class="arrow">→</span><span class="chip">$500 feels too much</span><span class="arrow">→</span><span class="chip">Custom kits from their own dentist</span><span class="arrow">→</span><span class="chip">40,000+ patients</span><span class="arrow">→</span><span class="chip hl">Book a call</span></div><p class="note rv">Only the first line changes. So when the ads run, the results show which opening works, and the rest of the edit stays the same.</p></div><div class="block call rv"><p class="label">The founder's call</p><p class="quote">“I think starting with me has more trust.”</p><p class="mono">Eric, founder · client feedback, 26 March 2026</p><p class="note rv">So the master film kept his opening, and the three short versions open with the dentist's problem.</p></div>
+</div></section>
+<section class="sec sec--a"><div class="wrap">
+<div class="meta"><span>03 · The scope</span><span>15 assets</span></div>
+<p class="label">What I delivered</p>
+<h2 class="rv">One recording.<br><span class="l2">Fifteen assets.</span></h2>
+<div class="table rv"><div class="trow"><b>1</b><span class="tn">Master film</span><span class="mono">16:9</span><span class="mono">69 s</span><span class="td">YouTube and the website</span></div><div class="trow"><b>3</b><span class="tn">Hook versions</span><span class="mono">9:16</span><span class="mono">~55 s each</span><span class="td">Reels and TikTok</span></div><div class="trow"><b>1</b><span class="tn">Offer angle</span><span class="mono">9:16</span><span class="mono">76 s</span><span class="td">A second pitch from the same footage</span></div><div class="trow"><b>5</b><span class="tn">Static ads</span><span class="mono">4:5</span><span class="mono">—</span><span class="td">Instagram and LinkedIn feeds</span></div><div class="trow"><b>5</b><span class="tn">Carousels</span><span class="mono">4:5</span><span class="mono">4–5 slides</span><span class="td">Swipe-through stories for the feed</span></div></div><div class="block"><p class="mono sub">5 static ads · 4:5</p><div class="grid g5"><figure class="fig "><img src="images/case-dental/st1.webp" alt="Static ad 1" width="700" height="875" loading="lazy" decoding="async" /></figure><figure class="fig "><img src="images/case-dental/st2.webp" alt="Static ad 2" width="700" height="875" loading="lazy" decoding="async" /></figure><figure class="fig "><img src="images/case-dental/st3.webp" alt="Static ad 3" width="700" height="875" loading="lazy" decoding="async" /></figure><figure class="fig "><img src="images/case-dental/st4.webp" alt="Static ad 4" width="700" height="875" loading="lazy" decoding="async" /></figure><figure class="fig "><img src="images/case-dental/st5.webp" alt="Static ad 5" width="700" height="875" loading="lazy" decoding="async" /></figure></div></div><div class="block"><p class="mono sub">5 carousels · first slide of each</p><div class="grid g5"><figure class="fig "><img src="images/case-dental/car1.webp" alt="Carousel 1, first slide" width="700" height="875" loading="lazy" decoding="async" /></figure><figure class="fig "><img src="images/case-dental/car2.webp" alt="Carousel 2, first slide" width="700" height="875" loading="lazy" decoding="async" /></figure><figure class="fig "><img src="images/case-dental/car3.webp" alt="Carousel 3, first slide" width="700" height="875" loading="lazy" decoding="async" /></figure><figure class="fig "><img src="images/case-dental/car4.webp" alt="Carousel 4, first slide" width="700" height="875" loading="lazy" decoding="async" /></figure><figure class="fig "><img src="images/case-dental/car5.webp" alt="Carousel 5, first slide" width="700" height="875" loading="lazy" decoding="async" /></figure></div><p class="note rv">The statics and carousels use the same type, colours and look as the videos, so a dentist who saw an ad recognises the brand in the feed.</p></div>
+</div></section>
+<section class="sec sec--b"><div class="wrap">
+<div class="meta"><span>04 · The master film</span><span>16:9 · 69 seconds</span></div>
+<p class="label">Craft</p>
+<h2 class="rv">A founder story,<br><span class="l2">edited to keep moving.</span></h2>
+<p class="lead rv">The founder filmed himself talking. I cut it to 69 seconds, removed fillers and repeated words, and built the visuals around his words: captions that move with his voice, product shots, simple charts and a clear call to action. Something new appears every few seconds, so a busy dentist keeps watching.</p><div class="block grid g3 imgs"><figure class="fig "><img src="images/case-dental/m1.webp" alt="0:04 · “seen our kits all over your feed”" width="900" height="506" loading="lazy" decoding="async" /><figcaption>0:04 · “seen our kits all over your feed”</figcaption></figure><figure class="fig "><img src="images/case-dental/m2.webp" alt="0:20 · Fast and easy" width="900" height="506" loading="lazy" decoding="async" /><figcaption>0:20 · Fast and easy</figcaption></figure><figure class="fig "><img src="images/case-dental/m3.webp" alt="0:25 · The cost should be lower" width="900" height="506" loading="lazy" decoding="async" /><figcaption>0:25 · The cost should be lower</figcaption></figure><figure class="fig "><img src="images/case-dental/m4.webp" alt="0:45 · Patients already buy elsewhere" width="900" height="506" loading="lazy" decoding="async" /><figcaption>0:45 · Patients already buy elsewhere</figcaption></figure><figure class="fig "><img src="images/case-dental/m5.webp" alt="0:50 · What patients search for" width="900" height="506" loading="lazy" decoding="async" /><figcaption>0:50 · What patients search for</figcaption></figure><figure class="fig "><img src="images/case-dental/m6.webp" alt="1:08 · Book a call" width="900" height="506" loading="lazy" decoding="async" /><figcaption>1:08 · Book a call</figcaption></figure></div><p class="note rv">Some kit images and store-shopping scenes were made with Nano Banana and Google Flow, then matched to Dental Origin's colours.</p>
+</div></section>
+<section class="sec sec--a"><div class="wrap">
+<div class="meta"><span>05 · Feedback</span><span>What changed in revisions</span></div>
+<p class="label">What went wrong</p>
+<h2 class="rv">“Too distracting.”<br><span class="l2">So I cut the 3D.</span></h2>
+<div class="grid g3"><div class="box rv"><p class="mono n">What I made</p><h3>3D objects between scenes.</h3><p>In my first version, 3D objects flew across the screen as transitions. I liked how they looked.</p></div><div class="box rv"><p class="mono n">His feedback</p><h3>They pulled focus.</h3><p>The founder said they took attention away from what he was saying.</p></div><div class="box hl rv"><p class="mono n">The fix</p><h3>Clean and simple.</h3><p>I removed them and kept simple cuts and moves, so the message lands first.</p></div></div><div class="block box rv"><p class="mono n">Another fix · Audio</p><h3>A broken section, fixed without a reshoot.</h3><p>A microphone glitch made one recorded section unusable. I recreated the founder's voice with ElevenLabs and patched just that section, so it blends into the rest of his recording.</p></div><div class="lesson rv"><p class="label">The lesson</p><p class="big">Motion should carry the message, not compete with it.</p></div>
+</div></section>
+<section class="sec sec--b"><div class="wrap">
+<div class="meta"><span>06 · New angle</span><span>9:16 · 76 seconds</span></div>
+<p class="label">Re-cut</p>
+<h2 class="rv">A new offer,<br><span class="l2">with no new filming.</span></h2>
+<p class="lead rv">From the same footage, I cut a second pitch. Instead of “here is a kit”, it sells Dental Origin as a full system for the practice.</p><div class="block"><div class="grid g4"><div class="box rv"><p class="mono n">01</p><h3>Your brand on the box</h3><p>Kits designed and made with the practice's own logo and colours.</p></div><div class="box rv"><p class="mono n">02</p><h3>Position it right</h3><p>Whitening as a way to attract patients, not a discount.</p></div><div class="box rv"><p class="mono n">03</p><h3>14-day staff launch</h3><p>A simple plan so the team offers it, not just the dentist.</p></div><div class="box rv"><p class="mono n">04</p><h3>Ongoing support</h3><p>Assets and help to keep it running.</p></div></div></div><div class="block grid g4 vrow"><figure class="fig "><img src="images/case-dental/v1.webp" alt="0:01 · The hook" width="600" height="1067" loading="lazy" decoding="async" /><figcaption>0:01 · The hook</figcaption></figure><figure class="fig "><img src="images/case-dental/v2.webp" alt="0:40 · The system" width="600" height="1067" loading="lazy" decoding="async" /><figcaption>0:40 · The system</figcaption></figure><figure class="fig "><img src="images/case-dental/v3.webp" alt="1:00 · Proof" width="600" height="1067" loading="lazy" decoding="async" /><figcaption>1:00 · Proof</figcaption></figure><figure class="fig "><img src="images/case-dental/v4.webp" alt="1:15 · Call to action" width="600" height="1067" loading="lazy" decoding="async" /><figcaption>1:15 · Call to action</figcaption></figure></div><p class="note rv">Claims in this video, like patient numbers, are the client's own.</p>
+</div></section>
+<section class="sec sec--a"><div class="wrap">
+<div class="meta"><span>07 · The result</span><span>Honest numbers</span></div>
+<p class="label">Result</p>
+<h2 class="rv">Live on their site,<br><span class="l2">and they came back for more.</span></h2>
+<div class="two "><div><figure class="fig "><img src="images/case-dental/live.webp" alt="Dental Origin whitening page with the master film as the hero video" width="1400" height="854" loading="lazy" decoding="async" /><figcaption>dentalorigin.com/pages/whitening · my master film as the hero video</figcaption></figure></div><div><p class="label">What I can show</p><p class="lead rv">My master film is the hero video on Dental Origin's whitening page.</p><p class="lead rv">The founder shared a cropped ads screenshot showing revenue from the ads, and asked me for more work.</p><p class="quote" style="font-size:34px;margin:26px 0 8px">“Video is really good.”</p><p class="mono">Eric, founder · 26 March 2026</p><p class="label" style="margin-top:32px;color:var(--muted)">What I can't</p><p class="lead rv">I had no access to the ad account. I don't know which hook won, and I have no numbers I can share.</p></div></div><div class="lesson rv"><p class="label">The lesson</p><p class="big">Next time, agree how we'll measure success before launch, and ask for access to the results.</p></div>
+</div></section>
+<section class="sec close"><div class="wrap">
+<div class="meta"><span>08 · Watch the work</span><span>All live links</span></div>
+<p class="label">Links</p>
+<h2 class="rv">Watch the work.<br><span class="l2">Every piece, in one place.</span></h2>
+<div class="lrows"><div class="lrow"><span class="lname">Master film</span><span class="ldesc">Founder story for YouTube and the website</span><span class="mono lfmt">16:9 · 69s</span><a class="pill" href="https://youtu.be/2_pFOqDJeNM" target="_blank" rel="noopener">Watch <span aria-hidden="true">↗</span></a></div><div class="lrow"><span class="lname">Hook 1</span><span class="ldesc">“Dentists, avoid this mistake…”</span><span class="mono lfmt">9:16</span><a class="pill" href="https://youtube.com/shorts/1iNrs1Swga4" target="_blank" rel="noopener">Watch <span aria-hidden="true">↗</span></a></div><div class="lrow"><span class="lname">Hook 2</span><span class="ldesc">“The real reason you're not selling…”</span><span class="mono lfmt">9:16</span><a class="pill" href="https://youtube.com/shorts/DHIEv3XcCcc" target="_blank" rel="noopener">Watch <span aria-hidden="true">↗</span></a></div><div class="lrow"><span class="lname">Hook 3</span><span class="ldesc">“If you're a dentist struggling…”</span><span class="mono lfmt">9:16</span><a class="pill" href="https://youtube.com/shorts/iU8gqMTdfr4" target="_blank" rel="noopener">Watch <span aria-hidden="true">↗</span></a></div><div class="lrow"><span class="lname">Offer angle</span><span class="ldesc">The full-system pitch</span><span class="mono lfmt">9:16 · 76s</span><a class="pill" href="https://youtube.com/shorts/aN82xkqIQms" target="_blank" rel="noopener">Watch <span aria-hidden="true">↗</span></a></div><div class="lrow"><span class="lname">Live page</span><span class="ldesc">Master film as the hero video</span><span class="mono lfmt">Website</span><a class="pill" href="https://dentalorigin.com/pages/whitening" target="_blank" rel="noopener">Open <span aria-hidden="true">↗</span></a></div></div>
+<p class="note" style="color:var(--close-mu)">The 5 static ads and 5 carousels are shown in section 03.</p>
+<a class="next rv" href="sn-real-estate.html"><span class="mono">Next case study</span><span class="next-t">S&amp;N Real Estate Investments <span aria-hidden="true">→</span></span><span class="next-l">One master video, fourteen pieces a week, for 15 months.</span></a>
+<div class="foot"><a href="case-studies.html" class="mono">← All case studies</a><span class="mono">Rupendra · Motion Designer &amp; Video Editor</span></div>
+</div></section>
+</main>
+<script>
+  const navbar = document.getElementById('navbar');
+  const onScroll = () => navbar.classList.toggle('scrolled', window.scrollY > 40);
+  window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+  const cursor = document.getElementById('cursor'), ring = document.getElementById('cursorRing');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cursor.style.left = (mx - 4) + 'px'; cursor.style.top = (my - 4) + 'px'; });
+  (function loop() { rx += (mx - rx - 18) * 0.12; ry += (my - ry - 18) * 0.12; ring.style.left = rx + 'px'; ring.style.top = ry + 'px'; requestAnimationFrame(loop); })();
+  document.addEventListener('mouseover', e => { const on = !!e.target.closest('a, button'); cursor.classList.toggle('hover', on); ring.classList.toggle('hover', on); });
+  const io = new IntersectionObserver(es => es.forEach(x => { if (x.isIntersecting) { x.target.classList.add('in'); io.unobserve(x.target); } }), { rootMargin: '0px 0px -8% 0px' });
+  document.querySelectorAll('.rv').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
